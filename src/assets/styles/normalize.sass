@@ -1,0 +1,36 @@
+@import './variables'
+
+// APP SCROLLBAR STYLE
+/* width */
+::-webkit-scrollbar 
+    display: none
+::-webkit-scrollbar-thumb 
+    background: #1ED760
+
+body
+    overflow: hidden !important
+    font-family: $font-family
+    font-size: $font-size
+    font-weight: $font-weight
+    color: $secondary04
+    background: $secondary01
+    svg
+        path
+            stroke: $secondary04
+    button
+        all: unset
+        cursor: pointer
+        color: $secondary04
+    a
+        text-decoration: none
+        display: block
+        color: $secondary04
+        &:hover
+            color: $secondary04
+    ul
+        padding: 0
+        left: 0
+        list-style: none
+    .container
+        padding-right: $container-padding
+        padding-left: $container-padding

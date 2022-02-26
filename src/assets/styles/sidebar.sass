@@ -1,0 +1,70 @@
+@import './variables'
+
+#app-main-area
+    .collapse-horizontal
+        display: block !important
+    .collapse-horizontal.open
+        #app-left-sidebar
+            width: 265px
+    .collapse-horizontal.collapse:not(.open)
+        #app-left-sidebar
+            width: 96px
+            transition: all linear .2s
+#app-left-sidebar
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    background: $secondary01
+    height: 100%
+    .app-logo,
+    .app-icon
+        width: 40px
+        path
+            stroke: transparent
+            fill: $secondary04
+    .app-logo
+        width: 125px
+    .collapse-btn
+        all: unset
+        cursor: pointer
+        svg
+            width: 15px
+    .app-navigation-list-container
+        height: 100%
+        overflow-y: scroll
+        overflow-x: hidden
+        .app-navigation-list
+            .app-nav-item
+                margin: .5rem 0
+                position: relative
+                padding: 0 $container-padding
+                .app-nav-link
+                    text-transform: capitalize
+                    padding: 0.45rem $container-padding
+                    display: flex
+                    align-items: center
+                    .icon
+                        min-width: 24px
+                        max-width: 28px
+                hr
+                    background: $gradient07
+            .download-app-area
+                justify-self: flex-end
+            .app-nav-item.active
+                &::before
+                    content: ''
+                    position: absolute
+                    left: 0
+                    height: 100%
+                    width: 3px
+                    background: $primary01
+                    border-radius: 2px
+                .app-nav-link
+                    background: $gradient07
+                    border-radius: 10000px
+    .text-center
+        .download-app-btn
+            background: $primary01
+            
+
+
