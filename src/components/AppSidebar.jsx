@@ -4,19 +4,19 @@ import "../assets/styles/sidebar.sass";
 
 import { Collapse } from "reactstrap";
 
-import { ReactComponent as Logo_White } from "../assets/images/logo-white.svg";
-import { ReactComponent as Logo_Icon } from "../assets/images/logo-icon.svg";
+import { ReactComponent as LogoWhite } from "../assets/images/logo-white.svg";
+import { ReactComponent as LogoIcon } from "../assets/images/logo-icon.svg";
 import { ReactComponent as HomeIcon } from "../assets/images/home.svg";
 import { ReactComponent as LikeIcon } from "../assets/images/like.svg";
 import { ReactComponent as SearchIcon } from "../assets/images/search.svg";
 import { ReactComponent as PlusIcon } from "../assets/images/plus.svg";
 import { ReactComponent as LibraryIcon } from "../assets/images/library.svg";
-import { ReactComponent as Chevron_Left } from "../assets/images/chevron-left.svg";
-import { ReactComponent as Chevron_Right } from "../assets/images/chevron-right.svg";
-import { ReactComponent as Download_Icon } from "../assets/images/download-icon.svg";
+import { ReactComponent as ChevronLeft } from "../assets/images/chevron-left.svg";
+import { ReactComponent as ChevronRight } from "../assets/images/chevron-right.svg";
+import { ReactComponent as DownloadIcon } from "../assets/images/download-icon.svg";
 
 export default function AppSidebar() {
-  const [isOpen, setisOpen] = useState(true);
+  const [isOpen, setisOpen] = useState(false);
 
   return (
     <>
@@ -32,18 +32,18 @@ export default function AppSidebar() {
             >
               <Link to="/" className="app-logo-home-link">
                 {isOpen ? (
-                  <Logo_White className="app-logo" />
+                  <LogoWhite className="app-logo" />
                 ) : (
-                  <Logo_Icon className="app-icon mt-4" />
+                  <LogoIcon className="app-icon mt-4" />
                 )}
               </Link>
               <button
-                className="collapse-btn"
+                className="collapse-btn d-none d-md-block"
                 onClick={() => {
                   setisOpen(!isOpen);
                 }}
               >
-                {isOpen ? <Chevron_Left /> : <Chevron_Right />}
+                {isOpen ? <ChevronLeft /> : <ChevronRight />}
               </button>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function AppSidebar() {
               </li>
               <li className="app-nav-item">
                 <a
-                  href="#"
+                  href="/"
                   className={`app-nav-link ${
                     isOpen ? "" : "justify-content-center"
                   }`}
@@ -109,9 +109,9 @@ export default function AppSidebar() {
               </li>
             </ul>
           </div>
-          <div className="py-5 text-center">
+          <div className="py-5 text-center d-none d-lg-block">
             <a href="/" className="spotify-btn download-app-btn">
-              {isOpen ? <span>DOWNLOAD NOW</span> : <Download_Icon />}
+              {isOpen ? <span>DOWNLOAD NOW</span> : <DownloadIcon />}
             </a>
           </div>
         </aside>
