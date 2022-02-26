@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import "../assets/styles/sidebar.sass";
 
@@ -16,7 +16,11 @@ import { ReactComponent as ChevronRight } from "../assets/images/chevron-right.s
 import { ReactComponent as DownloadIcon } from "../assets/images/download-icon.svg";
 
 export default function AppSidebar() {
-  const [isOpen, setisOpen] = useState(false);
+  const [isOpen, setisOpen] = useState(null);
+
+  useLayoutEffect(() => {
+    setisOpen(JSON.parse(window.localStorage.getItem("sidebarState")) || false);
+  }, []);
 
   return (
     <>
@@ -40,6 +44,7 @@ export default function AppSidebar() {
               <button
                 className="collapse-btn d-none d-md-block"
                 onClick={() => {
+                  window.localStorage.setItem("sidebarState", !isOpen);
                   setisOpen(!isOpen);
                 }}
               >
@@ -56,7 +61,7 @@ export default function AppSidebar() {
                     isOpen ? "" : "justify-content-center"
                   }`}
                 >
-                  <HomeIcon className={isOpen ? "icon me-3" : "icon"} />
+                  <HomeIcon className={isOpen ? "icon me-2" : "icon"} />
                   {!isOpen ? null : <span>home</span>}
                 </Link>
               </li>
@@ -67,7 +72,7 @@ export default function AppSidebar() {
                     isOpen ? "" : "justify-content-center"
                   }`}
                 >
-                  <SearchIcon className={isOpen ? "icon me-3" : "icon"} />
+                  <SearchIcon className={isOpen ? "icon me-2" : "icon"} />
                   {!isOpen ? null : <span>search</span>}
                 </Link>
               </li>
@@ -78,7 +83,7 @@ export default function AppSidebar() {
                     isOpen ? "" : "justify-content-center"
                   }`}
                 >
-                  <LibraryIcon className={isOpen ? "icon me-3" : "icon"} />
+                  <LibraryIcon className={isOpen ? "icon me-2" : "icon"} />
                   {!isOpen ? null : <span>library</span>}
                 </Link>
               </li>
@@ -92,7 +97,7 @@ export default function AppSidebar() {
                     isOpen ? "" : "justify-content-center"
                   }`}
                 >
-                  <PlusIcon className={isOpen ? "icon me-3" : "icon"} />
+                  <PlusIcon className={isOpen ? "icon me-2" : "icon"} />
                   {!isOpen ? null : <span>create playlist</span>}
                 </a>
               </li>
@@ -103,7 +108,7 @@ export default function AppSidebar() {
                     isOpen ? "" : "justify-content-center"
                   }`}
                 >
-                  <LikeIcon className={isOpen ? "icon me-3" : "icon"} />
+                  <LikeIcon className={isOpen ? "icon me-2" : "icon"} />
                   {!isOpen ? null : <span>liked songs</span>}
                 </Link>
               </li>
@@ -111,7 +116,7 @@ export default function AppSidebar() {
           </div>
           <div className="py-5 text-center d-none d-lg-block">
             <a href="/" className="spotify-btn download-app-btn">
-              {isOpen ? <span>DOWNLOAD NOW</span> : <DownloadIcon />}
+              {isOpen ? <span>Download Now</span> : <DownloadIcon />}
             </a>
           </div>
         </aside>

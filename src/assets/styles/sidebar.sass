@@ -2,19 +2,20 @@
 
 #app-main-area
     .collapse-horizontal
-        display: block !important
+        display: flex !important
+        width: auto !important
+        background: $secondary01
     .collapse-horizontal.open
         #app-left-sidebar
             width: 265px
     .collapse-horizontal.collapse:not(.open)
         #app-left-sidebar
-            width: 96px
+            width: 86px
             transition: all linear .2s
 #app-left-sidebar
     display: flex
     flex-direction: column
     justify-content: space-between
-    background: $secondary01
     height: 100%
     .app-logo,
     .app-icon
@@ -35,17 +36,17 @@
         overflow-x: hidden
         .app-navigation-list
             .app-nav-item
-                margin: .5rem 0
+                margin: .25rem 0
                 position: relative
                 padding: 0 $container-padding
                 .app-nav-link
                     text-transform: capitalize
-                    padding: 0.45rem $container-padding
+                    padding: 0.25rem $container-padding
                     display: flex
                     align-items: center
                     .icon
-                        min-width: 24px
-                        max-width: 28px
+                        min-width: 21px
+                        max-width: 21px
                 hr
                     background: $gradient07
             .download-app-area
