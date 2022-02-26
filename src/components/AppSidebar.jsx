@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import "../assets/styles/sidebar.sass";
 
@@ -48,7 +48,11 @@ export default function AppSidebar() {
                   setisOpen(!isOpen);
                 }}
               >
-                {isOpen ? <ChevronLeft /> : <ChevronRight />}
+                {isOpen ? (
+                  <ChevronLeft className="left" />
+                ) : (
+                  <ChevronRight className="right" />
+                )}
               </button>
             </div>
           </div>
@@ -91,15 +95,15 @@ export default function AppSidebar() {
                 <hr />
               </li>
               <li className="app-nav-item">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className={`app-nav-link ${
                     isOpen ? "" : "justify-content-center"
                   }`}
                 >
                   <PlusIcon className={isOpen ? "icon me-2" : "icon"} />
                   {!isOpen ? null : <span>create playlist</span>}
-                </a>
+                </Link>
               </li>
               <li className="app-nav-item">
                 <Link
@@ -115,9 +119,9 @@ export default function AppSidebar() {
             </ul>
           </div>
           <div className="py-5 text-center d-none d-lg-block">
-            <a href="/" className="spotify-btn download-app-btn">
-              {isOpen ? <span>Download Now</span> : <DownloadIcon />}
-            </a>
+            <Link to="/" className="spotify-btn download-app-btn">
+              {isOpen ? <span>Download App</span> : <DownloadIcon />}
+            </Link>
           </div>
         </aside>
       </Collapse>

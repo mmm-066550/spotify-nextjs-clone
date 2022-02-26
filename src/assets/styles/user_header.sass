@@ -1,0 +1,46 @@
+@import './variables'
+
+#user-actions_info-header
+    &.sticky-top
+        position: sticky
+        background: $secondary02
+        top: 0
+        padding: 16px !important
+    justify-content: center
+    transition: all .2s 
+    .app-navigation-btns-container
+        width: 86px
+        display: flex
+        justify-content: space-between
+        .navigate-btn
+            width: 34px
+            height: 34px
+            border-radius: 50%
+            background: rgba( 0, 0, 0, .7)
+            display: flex
+            justify-content: center
+            align-items: center
+            &:disabled
+                cursor: not-allowed
+                opacity: 0.4
+            svg
+                max-width: 14px 
+                min-width: 14px 
+    .user-actions-container
+        display: flex
+        justify-content: flex-end
+        .sign-up_in-btns
+            width: 220px
+            display: flex
+            align-items: center
+            justify-content: space-between
+            .user-reg_log-btn
+                border-radius: 1000px
+                text-transform: uppercase
+                padding: .6rem 2rem
+                font-weight: 600
+                &:hover
+                    transform: scale(1.05)
+            .login-btn
+                background: $secondary05
+                color: $secondary01

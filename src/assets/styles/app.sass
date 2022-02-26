@@ -5,18 +5,23 @@
     height: 100vh
     flex-direction: column
     justify-content: space-between
-    #track-play-control-area
-        height: 86px
-        background: $gradient03
+    #fixed-bottom-banner-area
+        height: 80px
+        background: $secondary02
         position: fixed
         bottom: 0
         width: 100%
+        border-top: 1px solid $secondary04
     #app-main-area
-        margin-bottom: 86px
+        margin-bottom: 80px
         overflow: hidden
         display: flex
         height: 100%
         #app-main-content
-            background: $secondary02
+            position: relative
+            background: $secondary03
             width: 100%
             overflow-y: scroll
+            #app
+                position: absolute
+                width: 100%
