@@ -1,5 +1,6 @@
 import React from "react";
 import "../assets/styles/signup_banner.sass";
+import { SPOTIFY_LOGIN } from "../config";
 
 export default function SignupBanner() {
   return (
@@ -11,7 +12,9 @@ export default function SignupBanner() {
           credit card needed
         </p>
       </div>
-      <button className="spotify-btn banner-signup-cta">sign up free</button>
+      <a href={SPOTIFY_LOGIN} className="spotify-btn banner-signup-cta">
+        sign up free
+      </a>
     </div>
   );
 }

@@ -1,9 +1,8 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "../assets/styles/sidebar.sass";
-
 import { Collapse } from "reactstrap";
-
+import { useLocation } from "react-router-dom";
 import { ReactComponent as LogoWhite } from "../assets/images/logo-white.svg";
 import { ReactComponent as LogoIcon } from "../assets/images/logo-icon.svg";
 import { ReactComponent as HomeIcon } from "../assets/images/home.svg";
@@ -16,11 +15,28 @@ import { ReactComponent as ChevronRight } from "../assets/images/chevron-right.s
 import { ReactComponent as DownloadIcon } from "../assets/images/download-icon.svg";
 
 export default function AppSidebar() {
+  const navList = useRef();
+  const location = useLocation();
   const [isOpen, setisOpen] = useState(null);
 
   useLayoutEffect(() => {
     setisOpen(JSON.parse(window.localStorage.getItem("sidebarState")) || false);
   }, []);
+
+  useEffect(() => {
+    [...navList.current.children].forEach((el) => {
+      el.classList.remove("active");
+    });
+    if (!location.pathname.split("/")[1]) {
+      navList.current.children[0].classList.add("active");
+    } else {
+      [...navList.current.children].forEach((item) => {
+        if (item.dataset.navlink === location.pathname.split("/")[1]) {
+          item.classList.add("active");
+        }
+      });
+    }
+  }, [location]);
 
   return (
     <>
@@ -57,8 +73,8 @@ export default function AppSidebar() {
             </div>
           </div>
           <div className="app-navigation-list-container pt-1">
-            <ul className="app-navigation-list">
-              <li className="active app-nav-item">
+            <ul ref={navList} className="app-navigation-list">
+              <li className="app-nav-item">
                 <Link
                   to={"/"}
                   className={`app-nav-link ${
@@ -69,7 +85,7 @@ export default function AppSidebar() {
                   {!isOpen ? null : <span>home</span>}
                 </Link>
               </li>
-              <li className="app-nav-item">
+              <li data-navlink="search" className="app-nav-item">
                 <Link
                   to={"/search"}
                   className={`app-nav-link ${
@@ -80,9 +96,9 @@ export default function AppSidebar() {
                   {!isOpen ? null : <span>search</span>}
                 </Link>
               </li>
-              <li className="app-nav-item">
+              <li data-navlink="collection" className="app-nav-item">
                 <Link
-                  to={"/library"}
+                  to={"/collection"}
                   className={`app-nav-link ${
                     isOpen ? "" : "justify-content-center"
                   }`}
@@ -105,7 +121,7 @@ export default function AppSidebar() {
                   {!isOpen ? null : <span>create playlist</span>}
                 </Link>
               </li>
-              <li className="app-nav-item">
+              <li data-navlink="likes" className="app-nav-item">
                 <Link
                   to={"/likes"}
                   className={`app-nav-link ${
