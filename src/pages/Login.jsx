@@ -8,7 +8,7 @@ export default function Login() {
       <i className="fab fa-spotify"></i>
       <button
         onClick={() => {
-          window.location.assign(SPOTIFY_LOGIN);
+          window.location.replace(SPOTIFY_LOGIN);
         }}
       >
         LOG INTO SPOTIFY
