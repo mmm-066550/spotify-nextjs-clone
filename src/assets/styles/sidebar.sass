@@ -54,14 +54,13 @@
                 transition: transform .1s linear
                 &:not(.active)
                     &:hover
-                        transform: scale(1.05)
+                        transform: scale(1.03)
                 .app-nav-link
                     text-transform: capitalize
                     border-radius: 10000px
                     padding: 0.20rem $container-padding
                     display: flex
                     align-items: center
-                    
                     .icon
                         min-width: 21px
                         max-width: 21px
@@ -79,9 +78,15 @@
                     background: $primary01
                     border-radius: 1000px
                 .app-nav-link
+                    color: #fff
                     background: $gradient07
+                    svg
+                        path
+                            stroke: #fff
     .text-center
         .download-app-btn
+            color: #fff
+            font-weight: 500
             background: $primary01
             border-radius: 1000px
             text-transform: uppercase
