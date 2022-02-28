@@ -13,16 +13,36 @@ import AppSidebar from "./AppSidebar";
 import SignupBanner from "./SignupBanner";
 import UserInfoHeader from "./UserInfoHeader";
 
+/// PAGET
+import Home from "../pages/Home";
+import Search from "../pages/Search";
+
 ///ACTIONS
-import { setSpotifyToken, setUser, getMe } from "../redux/actions";
+import { setSpotifyToken, getMe } from "../redux/actions";
 
 /// APP COMPONENT
 const mapStateToProps = (state) => state;
-const mapDispatchToProps = { setSpotifyToken, setUser, getMe };
+const mapDispatchToProps = { setSpotifyToken, getMe };
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(function App({ setSpotifyToken, setUser, getMe, token }) {
+)(function App({ setSpotifyToken, getMe, token }) {
+  const [appMode, setAppMode] = useState(
+    window.localStorage.getItem("app_mode") || "dark"
+  );
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  useLayoutEffect(() => {
+    document.body.classList.remove("dark_mode");
+    document.body.classList.remove("light_mode");
+    window.localStorage.setItem("app_mode", appMode);
+    if (appMode === "dark") {
+      document.body.classList.add("dark_mode");
+    }
+    if (appMode === "light") {
+      document.body.classList.add("light_mode");
+    }
+  }, [appMode]);
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   const { hash } = useLocation();
@@ -38,7 +58,7 @@ export default connect(
     ) {
       setSpotifyToken(window.localStorage.getItem("token"));
     }
-  }, []);
+  }, [setSpotifyToken]);
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // SET SPOTIFY TOKEN AT LOGIN OR SIGNUP
@@ -55,7 +75,7 @@ export default connect(
       );
       navigate("/");
     }
-  }, [hash]);
+  }, [hash, setSpotifyToken, navigate]);
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   useEffect(() => {
@@ -63,14 +83,14 @@ export default connect(
       window.localStorage.setItem("token", token);
       getMe(token);
     }
-  }, [token]);
+  }, [token, getMe]);
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   return (
     <AuthGuard>
       <main id="app-container">
         <div id="app-main-area">
-          <AppSidebar />
+          <AppSidebar appMode={appMode} setAppMode={setAppMode} />
           <div
             onScroll={(e) => {
               setscrollY(e.target.scrollTop);
@@ -81,104 +101,8 @@ export default connect(
               <UserInfoHeader scrollY={scrollY} />
               <Routes>
                 <Route path="/">
-                  <Route
-                    index
-                    element={
-                      <>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                      </>
-                    }
-                  />
-                  <Route path="search" element={<>SEARCH</>} />
+                  <Route index element={<Home />} />
+                  <Route path="search" element={<Search />} />
                   <Route path="collection" element={<>LIBRARY</>} />
                   <Route path="likes" element={<>LIKES</>} />
                   <Route path="account" element={<>ACCOUNT</>} />

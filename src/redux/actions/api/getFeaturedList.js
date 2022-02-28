@@ -1,8 +1,8 @@
 import api from "../../../api";
 
-const getNewReleases = (token, country, limit) => async (dispatch) => {
+const getFeaturedList = (token, country, limit) => async (dispatch) => {
   try {
-    const res = await api.get("/browse/new-releases", {
+    const res = await api.get("/browse/featured-playlists", {
       headers: {
         Authorization: `Bearer ${
           token || window.localStorage.getItem("token")
@@ -14,15 +14,15 @@ const getNewReleases = (token, country, limit) => async (dispatch) => {
       },
     });
     dispatch({
-      type: "GET_NEW_RELEASES",
-      payload: res.data.albums.items,
+      type: "GET_FEATURED_PLAYLISTS",
+      payload: res.data.playlists.items,
     });
   } catch (error) {
     dispatch({
-      type: "GET_NEW_RELEASES",
+      type: "GET_FEATURED_PLAYLISTS",
       payload: null,
     });
   }
 };
 
-export default getNewReleases;
+export default getFeaturedList;

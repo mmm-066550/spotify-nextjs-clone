@@ -1,13 +1,12 @@
 @import './variables'
 
 #user-actions_info-header
-    border-bottom: 1px solid transparent
+    position: sticky
+    top: 0
     &.sticky-top
-        position: sticky
-        background: $secondary02
-        top: 0
+        background: var(--secondary01)
         padding: 16px !important
-        border-color: $secondary04
+        box-shadow: 1px 1px 12px #00000015
     justify-content: center
     transition: all .2s 
     .app-navigation-btns-container
@@ -15,24 +14,27 @@
         display: flex
         justify-content: space-between
         .navigate-btn
-            color: $secondary05
+            color: var(--secondary05)
             width: 34px
             height: 34px
             border-radius: 50%
-            background: $secondary04
+            background: var(--secondary01)
             display: flex
             justify-content: center
             align-items: center
             &:disabled
                 cursor: not-allowed
                 opacity: 0.4
+            i
+                font-size: 1rem
             svg
                 max-width: 14px 
                 min-width: 14px 
     .user-actions-container
         display: flex
-        justify-content: flex-end
+        justify-content: center
         .account_logout-btns
+            min-width: 180px
             max-width: 180px
             display: flex
             align-items: center
@@ -48,9 +50,10 @@
                         padding: 3px
                         border-radius: 50%
                         overflow: hidden
-                        border: 2px solid $secondary04
+                        border: 2px solid $primary01
             .logout-link-btn
                 padding: .5rem
+                padding-right: 0
                 i
                     font-size: 1rem
 

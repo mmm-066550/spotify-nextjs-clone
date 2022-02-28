@@ -14,7 +14,7 @@ import { ReactComponent as ChevronLeft } from "../assets/images/chevron-left.svg
 import { ReactComponent as ChevronRight } from "../assets/images/chevron-right.svg";
 import { ReactComponent as DownloadIcon } from "../assets/images/download-icon.svg";
 
-export default function AppSidebar() {
+export default function AppSidebar({ appMode, setAppMode }) {
   const navList = useRef();
   const location = useLocation();
   const [isOpen, setisOpen] = useState(null);
@@ -131,6 +131,30 @@ export default function AppSidebar() {
                   <LikeIcon className={isOpen ? "icon me-2" : "icon"} />
                   {!isOpen ? null : <span>liked songs</span>}
                 </Link>
+              </li>
+              <li className="app-nav-item">
+                <hr />
+              </li>
+              <li className="app-nav-item">
+                <button
+                  className={`app-mode-btn`}
+                  onClick={() => {
+                    if (appMode === "dark") {
+                      setAppMode("light");
+                    } else {
+                      setAppMode("dark");
+                    }
+                  }}
+                >
+                  <i
+                    className={`fal fa-${
+                      appMode === "dark" ? "sun" : "moon"
+                    } me-2`}
+                  ></i>
+                  {!isOpen ? null : (
+                    <span>{appMode === "dark" ? "Light" : "Dark"} Mode</span>
+                  )}
+                </button>
               </li>
             </ul>
           </div>

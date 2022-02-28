@@ -1,0 +1,77 @@
+@import './variables'
+
+.work-component
+    background: var(--secondary04)
+    margin: $container-padding 0
+    min-height: 90% !important
+    border-radius: 10px
+    padding: .9rem
+    background: linear-gradient( 45deg,var(--secondary04) , var(--secondary03) )
+    box-shadow: 1px 1px 10px #00000010
+    display: flex
+    flex-direction: column
+    &:hover
+        background: var(--secondary04)
+    .work-cover-area
+        position: relative
+        a
+            display: block
+            overflow: hidden
+            border-radius: 5px
+            box-shadow: 1px 1px 10px #00000033
+        .play-track-btn
+            position: absolute
+            background: $primary01
+            width: 40px
+            height: 40px
+            right: 10px
+            bottom: 0px
+            display: flex
+            justify-content: center
+            align-items: center
+            border-radius: 50%
+            box-shadow: 1px 1px 10px #00000056
+            opacity: 0
+            transition: bottom .2s
+            &.playing
+                opacity: 1 !important
+                i
+                    margin-left: 0
+                    &::before
+                        content:'\f04d'
+            i
+                font-size: .75rem
+                margin-left: 3px
+                color: var(--secondary01)
+            &:hover
+                transform: scale(1.05)
+        .work-img
+            display: block
+            width: 100%
+            height: 100%
+            object-fit: cover
+        &.circled
+            a
+                border-radius: 50%
+    &:hover
+        .play-track-btn
+            opacity: 1
+            bottom: 10px
+        .work-cover-area.circled
+            .play-track-btn
+                bottom: 0 !important
+    .work-title
+        font-weight: 600
+        overflow: hidden
+        display: -webkit-box
+        -webkit-line-clamp: 1
+        -webkit-box-orient: vertical
+    .work-info
+        overflow: hidden
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+        opacity: 0.7
+@media screen and (min-width: 1200px)
+    .col-xl-2_5
+        width: 20%  !important

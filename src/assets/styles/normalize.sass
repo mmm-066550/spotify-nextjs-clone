@@ -2,30 +2,44 @@
 
 // APP SCROLLBAR STYLE
 ::-webkit-scrollbar-thumb 
-    // background: $secondary04
     background: $primary01
 ::-webkit-scrollbar 
+    display: none
     width: 7px
+
+//  LIGHT AND DARK MODE SETTINGS
+:root,.dark_mode
+    --secondary01: #090909
+    --secondary02: #0a0a0a
+    --secondary03: #0d0d0d
+    --secondary04: #161616
+    --secondary05: #fff
+.light_mode
+    --secondary01: #fff
+    --secondary02: #f3f3f3
+    --secondary03: #f6f6f6
+    --secondary04: #fff
+    --secondary05: #222
 body
     overflow: hidden !important
     font-family: $font-family
     font-size: $font-size
     font-weight: $font-weight
-    color: $secondary05
-    background: $secondary01
+    color: var(--secondary05)
+    background: var(--secondary01)
     svg
         path
-            stroke: $secondary05
+            stroke: var(--secondary05)
     button
         all: unset
         cursor: pointer
-        color: $secondary05
+        color: var(--secondary05)
     a
         text-decoration: none
         display: inline-block
-        color: $secondary05
+        color: var(--secondary05)
         &:hover
-            color: $secondary05
+            color: var(--secondary05)
     ul
         padding: 0
         left: 0

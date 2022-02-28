@@ -4,7 +4,7 @@
     .collapse-horizontal
         display: flex !important
         width: auto !important
-        background: $secondary01
+        background: var(--secondary01)
     .collapse-horizontal.open
         #app-left-sidebar
             width: 250px
@@ -22,7 +22,7 @@
         width: 40px
         path
             stroke: transparent
-            fill: $secondary05
+            fill: var(--secondary05)
     .app-logo
         width: 115px
     .collapse-btn
@@ -47,6 +47,13 @@
         &::-webkit-scrollbar
             display: none
         .app-navigation-list
+            .app-mode-btn
+                margin: .35rem 0
+                position: relative
+                padding: 0 $container-padding
+                transition: transform .1s linear
+                i
+                    font-size: 16px
             .app-nav-item
                 margin: .35rem 0
                 position: relative
@@ -54,7 +61,8 @@
                 transition: transform .1s linear
                 &:not(.active)
                     &:hover
-                        transform: scale(1.03)
+                        .app-nav-link
+                            transform: scale(1.03)
                 .app-nav-link
                     text-transform: capitalize
                     border-radius: 10000px
@@ -64,6 +72,7 @@
                     .icon
                         min-width: 21px
                         max-width: 21px
+                    
                 hr
                     background: $gradient07
             .download-app-area

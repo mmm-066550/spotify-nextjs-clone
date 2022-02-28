@@ -6,28 +6,26 @@ import { setUser } from "../redux/actions";
 
 export default connect((state) => state, { setUser })(function UserInfoHeader({
   user,
-  setUser,
-  scrollY,
 }) {
-  const [sticky, setsticky] = useState(false);
-  useEffect(() => {
-    if (scrollY > 100) {
-      setsticky(true);
-    }
-    if (scrollY < 100) {
-      setsticky(false);
-    }
-  }, [scrollY]);
+  const [sticky, setsticky] = useState(true);
+  // useEffect(() => {
+  // if (scrollY > 70) {
+  // setsticky(true);
+  // }
+  // if (scrollY < 60) {
+  // setsticky(false);
+  // }
+  // }, [scrollY]);
 
   return (
     <header
       id="user-actions_info-header"
-      className={`py-4 px-3 ${sticky ? "sticky-top" : ""}`}
+      className={`px-3 py-4 ${sticky ? "sticky-top" : ""}`}
     >
-      <div className="container">
+      <div className="container ">
         <div className="row align-items-center">
           <div className="col-6">
-            <div className="app-navigation-btns-container">
+            <div className=" d-none d-md-flex app-navigation-btns-container">
               <button className="navigate-btn nav-prev" disabled>
                 <i className="fal fa-chevron-left"></i>
               </button>
@@ -36,8 +34,8 @@ export default connect((state) => state, { setUser })(function UserInfoHeader({
               </button>
             </div>
           </div>
-          <div className="col-6">
-            <div className="user-actions-container">
+          <div className="col-12 col-md-6 align-items-center">
+            <div className="user-actions-container justify-content-sm-end">
               <div className="account_logout-btns">
                 <Link to={"/account"} className="user-profile-link">
                   <div className="me-3 user-avatar-wrapper">

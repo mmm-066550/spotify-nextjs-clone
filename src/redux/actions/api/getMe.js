@@ -16,6 +16,7 @@ const getMe = (token) => async (dispatch) => {
       type: "SET_USER",
       payload: false,
     });
+    window.localStorage.setItem("token", null);
   }
 };
 
