@@ -1,8 +1,8 @@
 import api from "../../../api";
 
-const getTopLikedArtists = (token, limit) => async (dispatch) => {
+const getRecentlyPlayed = (token, limit) => async (dispatch) => {
   try {
-    const res = await api.get("/me/top/artists", {
+    const res = await api.get("/me/player/recently-played", {
       headers: {
         Authorization: `Bearer ${
           token || window.localStorage.getItem("token")
@@ -13,15 +13,15 @@ const getTopLikedArtists = (token, limit) => async (dispatch) => {
       },
     });
     dispatch({
-      type: "GET_TOP_LIKED_ARTISTS",
+      type: "GET_RECENTLY_PLAYED",
       payload: res.data.items,
     });
   } catch (error) {
     dispatch({
-      type: "GET_TOP_LIKED_ARTISTS",
+      type: "GET_RECENTLY_PLAYED",
       payload: null,
     });
   }
 };
 
-export default getTopLikedArtists;
+export default getRecentlyPlayed;

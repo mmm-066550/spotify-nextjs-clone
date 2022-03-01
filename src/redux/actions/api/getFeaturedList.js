@@ -15,7 +15,7 @@ const getFeaturedList = (token, country, limit) => async (dispatch) => {
     });
     dispatch({
       type: "GET_FEATURED_PLAYLISTS",
-      payload: res.data.playlists.items,
+      payload: { msg: res.data.message, items: res.data.playlists.items },
     });
   } catch (error) {
     dispatch({

@@ -1,21 +1,23 @@
 import api from "../../../api";
 
-const getNewReleases = (token, country, limit) => async (dispatch) => {
+const getRecentlyPlayedLists = (token, limit) => async (dispatch) => {
   try {
-    const res = await api.get("/browse/new-releases", {
+    const res = await api.get("/me/player/recently-played", {
       headers: {
         Authorization: `Bearer ${
           token || window.localStorage.getItem("token")
         }`,
       },
       params: {
-        country: country || "EG",
         limit: limit || 5,
       },
     });
-    const ids = [...new Set(res.data.albums.items.map((item) => item.id))];
+    const ids = [
+      ...new Set(res.data.items.map((item) => item.context.uri.split(":")[2])),
+    ];
+
     ids.map(async (id) => {
-      const res = await api.get(`/albums/${id}`, {
+      const res = await api.get(`/playlists/${id}`, {
         headers: {
           Authorization: `Bearer ${
             token || window.localStorage.getItem("token")
@@ -23,16 +25,16 @@ const getNewReleases = (token, country, limit) => async (dispatch) => {
         },
       });
       dispatch({
-        type: "GET_NEW_RELEASES",
+        type: "GET_RECENTLY_PLAYED_PLAYLISTS",
         payload: res.data,
       });
     });
   } catch (error) {
     dispatch({
-      type: "GET_NEW_RELEASES",
+      type: "GET_RECENTLY_PLAYED_PLAYLISTS",
       payload: [],
     });
   }
 };
 
-export default getNewReleases;
+export default getRecentlyPlayedLists;

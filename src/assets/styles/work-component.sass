@@ -1,11 +1,12 @@
 @import './variables'
 
 .work-component
-    background: var(--secondary04)
+    overflow: hidden
+    padding: .9rem
     margin: $container-padding 0
+    background: var(--secondary04)
     min-height: 90% !important
     border-radius: 10px
-    padding: .9rem
     background: linear-gradient( 45deg,var(--secondary04) , var(--secondary03) )
     box-shadow: 1px 1px 10px #00000010
     display: flex
@@ -14,10 +15,13 @@
         background: var(--secondary04)
     .work-cover-area
         position: relative
+        background: var(--secondary02)
+        border-radius: 7px
+        min-height: 150px
         a
             display: block
             overflow: hidden
-            border-radius: 5px
+            border-radius: 7px
             box-shadow: 1px 1px 10px #00000033
         .play-track-btn
             position: absolute
@@ -46,13 +50,19 @@
             &:hover
                 transform: scale(1.05)
         .work-img
-            display: block
             width: 100%
             height: 100%
             object-fit: cover
+            border-radius: 7px
+            overflow: hidden
         &.circled
+            border-radius: 50%
+            align-self: center
             a
+                align-self: center
                 border-radius: 50%
+                width: 150px
+                height: 150px
     &:hover
         .play-track-btn
             opacity: 1

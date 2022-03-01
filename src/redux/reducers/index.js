@@ -5,6 +5,7 @@ import newReleasesReducer from "./newReleasesReducer";
 import featuredPlaylists from "./featuredPlaylists";
 import topArtistsReducer from "./topArtistsReducer";
 import browseCategories from "./browseCategories";
+import recentlyPlayedPlaylists from "./recentlyPlayedPlaylists";
 
 export default combineReducers({
   user: userReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   featuredPlaylists,
   browseCategories,
   yourTopArtists: topArtistsReducer,
+  recentlyPlayedPlaylists,
 });

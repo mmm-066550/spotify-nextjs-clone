@@ -27,7 +27,7 @@ export default function WorkComponent({ work }) {
           </button>
         </div>
         <Link to={"/"}>
-          <h6 className="mt-4 mb-1 work-title">{work?.name}</h6>
+          <h6 className="mt-4 mb-1 work-title">{work?.name || "Work Name"}</h6>
           <p className="mb-3 work-info">
             {work?.description ||
               work?.release_date ||

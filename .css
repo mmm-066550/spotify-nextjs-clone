@@ -1,0 +1,6 @@
+::root{
+    --vd: red
+}
+body{
+    background: var(--vd);
+}

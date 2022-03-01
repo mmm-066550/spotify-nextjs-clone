@@ -13,9 +13,10 @@ import AppSidebar from "./AppSidebar";
 import SignupBanner from "./SignupBanner";
 import UserInfoHeader from "./UserInfoHeader";
 
-/// PAGET
+/// PAGES
 import Home from "../pages/Home";
 import Search from "../pages/Search";
+import Genre from "../pages/Genre";
 
 ///ACTIONS
 import { setSpotifyToken, getMe } from "../redux/actions";
@@ -106,6 +107,7 @@ export default connect(
                   <Route path="collection" element={<>LIBRARY</>} />
                   <Route path="likes" element={<>LIKES</>} />
                   <Route path="account" element={<>ACCOUNT</>} />
+                  <Route path="genre/:genre" element={<Genre />} />
                 </Route>
               </Routes>
             </div>
