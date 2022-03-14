@@ -1,5 +1,5 @@
 const CLIENT_ID = "8f64788e26c9441487c4934944f713d2";
-const REDIRECT_URI = "https://spotify-mmm066550.vercel.app";
+const REDIRECT_URI = window.location.origin || "http://localhost:3000";
 
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
