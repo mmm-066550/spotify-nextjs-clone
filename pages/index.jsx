@@ -45,15 +45,7 @@ export default connect(
       if (!newReleasePlaylists?.items?.length)
         await getNewReleases(token, countryCode);
     })();
-  }, [
-    token,
-    countryCode,
-    newReleasePlaylists?.items?.length,
-    albumsPlaylists?.items?.length,
-    recentlyPlaylists?.items?.length,
-    featuredPlaylists?.items?.length,
-    artistsPlaylists?.items?.length,
-  ]);
+  }, []);
   return (
     <div className="app_home_page_content_area">
       <PlaylistsRow

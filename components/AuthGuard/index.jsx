@@ -21,7 +21,7 @@ export const AuthGuard = ({
     if (window.localStorage.getItem("token") !== "null")
       updateTokenState(window.localStorage.getItem("token"));
     getUserCountry();
-  }, [updateTokenState, updateTokenState]);
+  }, []);
 
   useEffect(() => {
     if (router.asPath.startsWith("/#access_token=")) {
