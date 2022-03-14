@@ -15,10 +15,11 @@ export default function AppMain({ children }) {
     container.current.scrollTop = 0;
   }, [router]);
 
+  useEffect(() => {
+    setOpen(JSON.parse(window.localStorage.getItem("isAsideOpen")) || false);
+  }, []);
+
   if (typeof window !== "undefined") {
-    useLayoutEffect(() => {
-      setOpen(JSON.parse(window.localStorage.getItem("isAsideOpen")) || false);
-    }, []);
     window.onresize = () => {
       if (window.innerWidth < 991) {
         if (open) setOpen(false);

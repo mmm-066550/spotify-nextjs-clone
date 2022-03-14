@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useCallback } from "react";
+import React, { useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import PlaylistsRow from "../components/PlaylistsRow";
 import {
@@ -34,7 +34,7 @@ export default connect(
   getNewReleases,
   countryCode,
 }) {
-  const RenderPlaylists = useCallback(() => {
+  useLayoutEffect(() => {
     (async () => {
       if (!recentlyPlaylists?.items?.length)
         await getRecentlyPlayedLists(token);
@@ -45,11 +45,15 @@ export default connect(
       if (!newReleasePlaylists?.items?.length)
         await getNewReleases(token, countryCode);
     })();
-  });
-
-  useLayoutEffect(() => {
-    RenderPlaylists();
-  }, [RenderPlaylists]);
+  }, [
+    token,
+    countryCode,
+    newReleasePlaylists?.items?.length,
+    albumsPlaylists?.items?.length,
+    recentlyPlaylists?.items?.length,
+    featuredPlaylists?.items?.length,
+    artistsPlaylists?.items?.length,
+  ]);
   return (
     <div className="app_home_page_content_area">
       <PlaylistsRow
