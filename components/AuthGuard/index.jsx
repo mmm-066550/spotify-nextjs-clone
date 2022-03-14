@@ -16,12 +16,12 @@ export const AuthGuard = ({
 }) => {
   const router = useRouter();
 
-  if (typeof window !== "undefined")
-    useLayoutEffect(() => {
-      if (window.localStorage.getItem("token") !== "null")
-        updateTokenState(window.localStorage.getItem("token"));
-      getUserCountry();
-    }, []);
+  // if (typeof window !== "undefined")
+  useEffect(() => {
+    if (window.localStorage.getItem("token") !== "null")
+      updateTokenState(window.localStorage.getItem("token"));
+    getUserCountry();
+  }, []);
 
   useEffect(() => {
     if (router.asPath.startsWith("/#access_token=")) {
@@ -39,7 +39,7 @@ export const AuthGuard = ({
       window.localStorage.setItem("token", token);
       getMe(token);
     }
-  }, [token]);
+  }, [token, getMe]);
 
   if (token === null) {
     return <LandingPage />;

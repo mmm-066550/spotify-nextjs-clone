@@ -45,7 +45,7 @@ export default connect(
       if (!newReleasePlaylists?.items?.length)
         await getNewReleases(token, countryCode);
     })();
-  }, []);
+  });
 
   useLayoutEffect(() => {
     RenderPlaylists();
