@@ -1,9 +1,10 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import LandingPage from "../LandingPage";
 import { updateTokenState, getMe, getUserCountry } from "../../redux/actions";
 import LoaderWrapper from "../LoaderWrapper";
+import { useLayoutEffect } from "react";
 
 export const AuthGuard = ({
   user,
@@ -15,13 +16,12 @@ export const AuthGuard = ({
 }) => {
   const router = useRouter();
 
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined")
     useLayoutEffect(() => {
       if (window.localStorage.getItem("token") !== "null")
         updateTokenState(window.localStorage.getItem("token"));
       getUserCountry();
     }, []);
-  }
 
   useEffect(() => {
     if (router.asPath.startsWith("/#access_token=")) {
@@ -32,7 +32,7 @@ export const AuthGuard = ({
       );
       router.push("/");
     }
-  }, [router.asPath]);
+  });
 
   useEffect(() => {
     if (token) {
@@ -41,7 +41,7 @@ export const AuthGuard = ({
     }
   }, [token]);
 
-  if (!token) {
+  if (token === null) {
     return <LandingPage />;
   } else {
     if (user) {

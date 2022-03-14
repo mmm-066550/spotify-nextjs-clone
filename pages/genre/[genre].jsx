@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import PlaylistsRow from "../../components/PlaylistsRow";
@@ -40,7 +40,7 @@ export default connect(
 }) {
   const router = useRouter();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!genrePlaylists.items.length)
       switch (router.query.genre) {
         case "recently_played":

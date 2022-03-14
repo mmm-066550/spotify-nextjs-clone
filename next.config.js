@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["i.scdn.co", "seed-mix-image.spotifycdn.com", "*"],
   },
-};
+  typescript: {
+    ignoreBuildErrors: true,
+  }
+}
 
 module.exports = nextConfig;
