@@ -12,13 +12,22 @@ export default (list = { msg: null, items: [] }, action) => {
     };
   }
   if (action.type === "GET_GENRE_FEATURED_PLAYLISTS") {
-    return action.payload;
+    return {
+      msg: action.payload.msg,
+      items: action.payload.items,
+    };
   }
   if (action.type === "GET_TOP_LIKED_ARTISTS_ALL") {
-    return action.payload;
+    return {
+      msg: action.payload.msg,
+      items: action.payload.items,
+    };
   }
   if (action.type === "GET_TOP_LIKED_TRACKS_ALL") {
-    return action.payload;
+    return {
+      msg: action.payload.msg,
+      items: action.payload.items,
+    };
   }
 
   if (action.type === "CLEAR_REDUCER") {

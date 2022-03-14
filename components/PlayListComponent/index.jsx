@@ -28,18 +28,16 @@ export default function PlayListComponent({ playlist }) {
               ) : null}
             </a>
           </Link>
-          <button className={styles.play_pause_track_btn}>
-            <BiPlay />
-          </button>
+          {playlist ? (
+            <button className={styles.play_pause_track_btn}>
+              <BiPlay />
+            </button>
+          ) : null}
         </div>
-        <Link href={`/${playlist?.type}/${playlist?.id}`}>
-          <a>
-            {playlist ? (
+        {playlist ? (
+          <Link href={`/${playlist?.type}/${playlist?.id}`}>
+            <a>
               <h6 className={styles.playlist_title}>{playlist.name}</h6>
-            ) : (
-              <span className={`mb-3 ${styles.skelton_placeholder}`}></span>
-            )}
-            {playlist ? (
               <p
                 className={styles.playlist_overview}
                 dangerouslySetInnerHTML={{
@@ -57,18 +55,15 @@ export default function PlayListComponent({ playlist }) {
                         ),
                 }}
               />
-            ) : (
-              <>
-                <span
-                  className={`w-100 my-2 ${styles.skelton_placeholder}`}
-                ></span>
-                <span
-                  className={`w-100 my-2 ${styles.skelton_placeholder}`}
-                ></span>
-              </>
-            )}
-          </a>
-        </Link>
+            </a>
+          </Link>
+        ) : (
+          <>
+            <span className={`mb-3 ${styles.skelton_placeholder}`}></span>
+            <span className={`w-100 my-2 ${styles.skelton_placeholder}`}></span>
+            <span className={`w-100 my-1 ${styles.skelton_placeholder}`}></span>
+          </>
+        )}
       </div>
     </div>
   );

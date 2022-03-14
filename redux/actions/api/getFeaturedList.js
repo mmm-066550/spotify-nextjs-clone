@@ -27,7 +27,7 @@ const getFeaturedList = (token, country, limit) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_FEATURED_PLAYLISTS",
-      payload: null,
+      payload: { msg: "Something wrong happened!", items: [] },
     });
   }
 };

@@ -37,7 +37,7 @@ const getNewReleases = (token, country, limit) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_NEW_RELEASES_PLAYLISTS",
-      payload: [],
+      payload: { msg: "Something wrong happened!", items: [] },
     });
   }
 };

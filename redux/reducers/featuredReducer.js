@@ -1,6 +1,9 @@
-export default (list = null, action) => {
+export default (list = { msg: null, items: [] }, action) => {
   if (action.type === "GET_FEATURED_PLAYLISTS") {
-    return action.payload;
+    return {
+      msg: action.payload.msg,
+      items: action.payload.items,
+    };
   }
   return list;
 };

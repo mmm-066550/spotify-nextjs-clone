@@ -54,6 +54,7 @@ export default connect(
           break;
         case "top_albums":
           getTopLikedTracks(token, 30);
+          break;
         case "new_releases":
           getNewReleases(token, countryCode, 30);
           break;

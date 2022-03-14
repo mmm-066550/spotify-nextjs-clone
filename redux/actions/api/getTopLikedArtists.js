@@ -26,7 +26,7 @@ const getTopLikedArtists = (token, limit) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_TOP_LIKED_ARTISTS",
-      payload: null,
+      payload: { msg: "Something wrong happened!", items: [] },
     });
   }
 };

@@ -2,7 +2,7 @@ import api from "../../../utils/api";
 
 const getRecentlyPlayedLists = (token, limit) => async (dispatch) => {
   try {
-    const res_1 = await api.get("/me/player/recently-played", {
+    const recentTracks = await api.get("/me/player/recently-played", {
       headers: {
         Authorization: `Bearer ${
           token || window.localStorage.getItem("token")
@@ -14,7 +14,7 @@ const getRecentlyPlayedLists = (token, limit) => async (dispatch) => {
     });
     const ids = [
       ...new Set(
-        res_1.data.items.map((item) => item.context.uri.split(":")[2])
+        recentTracks.data.items.map((item) => item.context.uri.split(":")[2])
       ),
     ];
 
@@ -26,7 +26,7 @@ const getRecentlyPlayedLists = (token, limit) => async (dispatch) => {
           }`,
         },
       });
-      if (res_1.data.items.length <= 5)
+      if (recentTracks.data.items.length <= 5)
         dispatch({
           type: "GET_RECENTLY_PLAYED_PLAYLISTS",
           payload: { msg: "recently played", item: res.data },
@@ -41,7 +41,7 @@ const getRecentlyPlayedLists = (token, limit) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_RECENTLY_PLAYED_PLAYLISTS",
-      payload: null,
+      payload: { msg: "Something wrong happened!", items: [] },
     });
   }
 };

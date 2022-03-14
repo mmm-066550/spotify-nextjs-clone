@@ -1,6 +1,6 @@
-export default (albums = null, action) => {
+export default (albums = { msg: null, items: [] }, action) => {
   if (action.type === "GET_TOP_LIKED_TRACKS") {
-    return action.payload;
+    return { msg: action.payload.msg, items: action.payload.items };
   }
   return albums;
 };

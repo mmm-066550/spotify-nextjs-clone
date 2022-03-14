@@ -12,8 +12,8 @@ export default connect((state) => state)(function ({ user }) {
           <div className={styles.user_avatar}>
             <Image
               quality={100}
-              width={32}
-              height={32}
+              width={26}
+              height={26}
               src={user?.images[0]?.url}
               alt="user_avatar"
             />

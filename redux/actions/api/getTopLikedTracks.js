@@ -27,7 +27,7 @@ const getTopLikedTracks = (token, limit) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_TOP_LIKED_TRACKS",
-      payload: null,
+      payload: { msg: "Something wrong happened!", items: [] },
     });
   }
 };

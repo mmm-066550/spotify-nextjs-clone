@@ -35,16 +35,11 @@ export default connect(
   countryCode,
 }) {
   useLayoutEffect(() => {
-    (async () => {
-      if (!recentlyPlaylists?.items?.length)
-        await getRecentlyPlayedLists(token);
-      if (!featuredPlaylists?.items?.length)
-        await getFeaturedList(token, countryCode);
-      if (!artistsPlaylists?.items?.length) await getTopLikedArtists(token);
-      if (!albumsPlaylists?.items?.length) await getTopLikedTracks(token);
-      if (!newReleasePlaylists?.items?.length)
-        await getNewReleases(token, countryCode);
-    })();
+    if (!recentlyPlaylists?.items?.length) getRecentlyPlayedLists(token);
+    if (!featuredPlaylists?.items?.length) getFeaturedList(token, countryCode);
+    if (!artistsPlaylists?.items?.length) getTopLikedArtists(token);
+    if (!albumsPlaylists?.items?.length) getTopLikedTracks(token);
+    if (!newReleasePlaylists?.items?.length) getNewReleases(token, countryCode);
   }, []);
   return (
     <div className="app_home_page_content_area">
