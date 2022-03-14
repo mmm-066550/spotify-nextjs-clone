@@ -1,0 +1,30 @@
+.user_actions_area
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    .logout_btn
+        margin-left: 1rem
+        a
+            color: var(--text-color)
+            svg
+                width: 22px
+                height: 22px
+    .user_profile_btn
+        color: var(--text-color)
+        display: flex
+        align-items: center
+        span
+            width: 90px
+            font-size: 12px
+        .user_avatar
+            display: grid
+            place-items: center
+            text-align: center
+            border-radius: 50%
+            margin-right: .75rem
+            width: 40px
+            height: 40px
+            border: 1px solid var(--bs-gray-500)
+            img
+                object-fit: cover
+                border-radius: 50%
