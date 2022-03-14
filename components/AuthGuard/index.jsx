@@ -16,10 +16,10 @@ export const AuthGuard = ({
 }) => {
   const router = useRouter();
 
-  // if (typeof window !== "undefined")
-  useEffect(() => {
-    if (window.localStorage.getItem("token") !== "null")
-      updateTokenState(window.localStorage.getItem("token"));
+  useLayoutEffect(() => {
+    if (typeof window !== "undefined")
+      if (window.localStorage.getItem("token") !== "null")
+        updateTokenState(window.localStorage.getItem("token"));
     getUserCountry();
   }, []);
 
@@ -39,7 +39,7 @@ export const AuthGuard = ({
       window.localStorage.setItem("token", token);
       getMe(token);
     }
-  }, [token, getMe]);
+  }, [token]);
 
   if (token === null) {
     return <LandingPage />;
