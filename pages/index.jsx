@@ -20,7 +20,7 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(function ({
+)(function Index({
   featuredPlaylists,
   recentlyPlaylists,
   getFeaturedList,

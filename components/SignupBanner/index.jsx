@@ -11,7 +11,12 @@ export default function SignupBanner() {
           credit card needed
         </p>
       </div>
-      <a href={"/"} target={"_blank"} className={styles.banner_signup_cta}>
+      <a
+        rel="noreferrer noopener"
+        href={"/"}
+        target={"_blank"}
+        className={styles.banner_signup_cta}
+      >
         sign up free
       </a>
     </div>

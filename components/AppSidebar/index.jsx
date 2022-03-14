@@ -7,7 +7,7 @@ import ArrowRight from "../../public/assets/icons/arrowRight";
 import DownloadIcon from "../../public/assets/icons/downloadIcon";
 import AsideNavList from "../AsideNavList";
 import Link from "next/link";
-export default function ({ style, open, setOpen }) {
+export default function AppSidebar({ style, open, setOpen }) {
   return (
     <aside className={`${style} ${!open ? "align-items-center" : ""}`}>
       <div>

@@ -27,7 +27,7 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(function ({
+)(function GenrePage({
   genrePlaylists,
   getNewReleases,
   countryCode,

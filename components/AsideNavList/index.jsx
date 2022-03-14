@@ -9,7 +9,7 @@ import styles from "./.module.sass";
 import NavLink from "../NavLink";
 import { useTheme } from "next-themes";
 
-export default function ({ open }) {
+export default function AsideNavList({ open }) {
   const { theme, setTheme } = useTheme("");
   const siteMap = [
     {

@@ -4,7 +4,7 @@ import NavBtns from "../NavBtns";
 import SearchInput from "../SearchInput";
 import UserActions from "../UserActions";
 
-export default function () {
+export default function ActionsTopBar() {
   return (
     <header className={styles.actions_top_bar}>
       <div className={styles.container}>

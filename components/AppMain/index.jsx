@@ -6,7 +6,7 @@ import ActionsTopBar from "../ActionsTopBar";
 import { useLayoutEffect, useEffect } from "react";
 import { useRouter } from "next/router";
 
-export default function ({ children }) {
+export default function AppMain({ children }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const container = useRef(null);

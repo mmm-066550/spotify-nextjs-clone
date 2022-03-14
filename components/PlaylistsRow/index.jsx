@@ -3,7 +3,7 @@ import styles from "./.module.sass";
 import Link from "next/link";
 import PlayListComponent from "../PlayListComponent";
 
-export default function ({ content, link, placeholder }) {
+export default function PlaylistsRow({ content, link, placeholder }) {
   return (
     <section className={styles.playlists_row}>
       <div className="d-flex playlists_row_header align-items-center justify-content-between">

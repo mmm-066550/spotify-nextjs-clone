@@ -5,7 +5,7 @@ import { BiPlay } from "react-icons/bi";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ({ playlist }) {
+export default function PlayListComponent({ playlist }) {
   return (
     <div className={`col-12 col-sm-6 col-md-4 col-xl-3  ${styles.col_xxl_2_5}`}>
       <div className={styles.playlist_component_styled}>

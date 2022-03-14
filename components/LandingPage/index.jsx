@@ -9,7 +9,7 @@ import AppModeIcon from "../../public/assets/icons/appModeIcon";
 import SpotifyIcon from "../../public/assets/icons/icon";
 import { BsSpotify } from "react-icons/bs";
 
-export default function () {
+export default function LandingPage() {
   const router = useRouter();
   const { theme, setTheme } = useTheme("");
 
@@ -28,13 +28,13 @@ export default function () {
             <nav className="w-100 d-none d-xl-flex">
               <ul className={styles.nav_list}>
                 <li>
-                  <a href="/">premium</a>
+                  <a href="/xxx">premium</a>
                 </li>
                 <li>
-                  <a href="/">support</a>
+                  <a href="/xxx">support</a>
                 </li>
                 <li>
-                  <a href="/">download</a>
+                  <a href="/xxx">download</a>
                 </li>
               </ul>
             </nav>
