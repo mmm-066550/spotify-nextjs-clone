@@ -49,7 +49,7 @@ export default connect(
 
   useLayoutEffect(() => {
     RenderPlaylists();
-  }, []);
+  }, [RenderPlaylists]);
   return (
     <div className="app_home_page_content_area">
       <PlaylistsRow
