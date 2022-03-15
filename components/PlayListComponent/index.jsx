@@ -21,7 +21,7 @@ export default function PlayListComponent({ playlist }) {
                   quality={100}
                   src={playlist?.images[0]?.url}
                   layout="responsive"
-                  alt="none"
+                  alt={`${playlist.name}_cover`}
                   width={100}
                   height={100}
                 />

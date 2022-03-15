@@ -7,6 +7,7 @@ import {
   getTopLikedArtists,
   getTopLikedTracks,
   getNewReleases,
+  getBrowseCategories,
 } from "../redux/actions";
 
 const mapStateToProps = (state) => state;
@@ -16,6 +17,7 @@ const mapDispatchToProps = {
   getTopLikedArtists,
   getTopLikedTracks,
   getNewReleases,
+  getBrowseCategories,
 };
 export default connect(
   mapStateToProps,
@@ -33,6 +35,8 @@ export default connect(
   newReleasePlaylists,
   getNewReleases,
   countryCode,
+  getBrowseCategories,
+  browseCategories,
 }) {
   useLayoutEffect(() => {
     if (!recentlyPlaylists?.items?.length) getRecentlyPlayedLists(token);
@@ -40,6 +44,8 @@ export default connect(
     if (!artistsPlaylists?.items?.length) getTopLikedArtists(token);
     if (!albumsPlaylists?.items?.length) getTopLikedTracks(token);
     if (!newReleasePlaylists?.items?.length) getNewReleases(token, countryCode);
+    if (!browseCategories.length)
+      getBrowseCategories(token, countryCode, 10, 5);
   }, []);
   return (
     <div className="app_home_page_content_area">
@@ -68,6 +74,9 @@ export default connect(
         content={newReleasePlaylists}
         placeholder={5}
       />
+      {browseCategories.map((category, i) => {
+        return <PlaylistsRow key={i} content={category} placeholder={5} />;
+      })}
     </div>
   );
 });

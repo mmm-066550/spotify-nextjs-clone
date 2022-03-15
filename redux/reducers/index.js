@@ -8,6 +8,7 @@ import albumsPlaylists from "./topTracksReducer";
 import newReleasePlaylists from "./newReleaseReducer";
 import genrePlaylists from "./genrePageReducer";
 import countryCode from "./countryCodeReducer";
+import browseCategories from "./browseReducer";
 
 export default combineReducers({
   user,
@@ -19,4 +20,5 @@ export default combineReducers({
   newReleasePlaylists,
   genrePlaylists,
   countryCode,
+  browseCategories,
 });

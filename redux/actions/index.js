@@ -7,6 +7,7 @@ import getTopLikedTracks from "./api/getTopLikedTracks";
 import getNewReleases from "./api/getNewReleases";
 import clearReducer from "./clearReducer";
 import getUserCountry from "./getUserCountry";
+import getBrowseCategories from "./api/getBrowseCategories";
 export {
   getMe,
   getFeaturedList,
@@ -17,4 +18,5 @@ export {
   getNewReleases,
   clearReducer,
   getUserCountry,
+  getBrowseCategories,
 };

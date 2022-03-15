@@ -12,7 +12,7 @@ export default function ActionsTopBar() {
           <div className="col-8">
             <div className="d-lg-flex d-none align-items-center">
               <NavBtns />
-              {/* <SearchInput /> */}
+              <SearchInput />
             </div>
           </div>
           <div className="col-4">

@@ -20,7 +20,7 @@ export const AuthGuard = ({
     if (typeof window !== "undefined")
       if (window.localStorage.getItem("token") !== "null")
         updateTokenState(window.localStorage.getItem("token"));
-    getUserCountry();
+    // getUserCountry();
   }, []);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const AuthGuard = ({
     }
   }, [token]);
 
-  if (token === null) {
+  if (!token) {
     return <LandingPage />;
   } else {
     if (user) {
