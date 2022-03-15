@@ -5,8 +5,10 @@ import SignupBanner from "../SignupBanner";
 import ActionsTopBar from "../ActionsTopBar";
 import { useLayoutEffect, useEffect } from "react";
 import { useRouter } from "next/router";
+import { FiChevronUp } from "react-icons/fi";
 
 export default function AppMain({ children }) {
+  const [scrollBtn, setscrollBtn] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const container = useRef(null);
@@ -27,6 +29,10 @@ export default function AppMain({ children }) {
         if (!open) setOpen(true);
       }
     };
+    container?.current?.onscroll = () => {
+      if (container?.current?.scrollTop >= 400) setscrollBtn(true);
+      if (container?.current?.scrollTop < 100) setscrollBtn(false);
+    };
   }
 
   return (
@@ -42,7 +48,20 @@ export default function AppMain({ children }) {
         <div ref={container} className={styles.app_main_func_container}>
           <div className="position-absolute w-100">
             <ActionsTopBar />
-            <div className={styles.container}>{children}</div>
+            <div className={styles.container}>
+              <>
+                {scrollBtn ? (
+                  <button
+                    title="Scroll To The Top"
+                    className={styles.scroll_top_btn}
+                    onClick={() => (container.current.scrollTop = 0)}
+                  >
+                    <FiChevronUp />
+                  </button>
+                ) : null}
+                {children}
+              </>
+            </div>
           </div>
         </div>
       </div>

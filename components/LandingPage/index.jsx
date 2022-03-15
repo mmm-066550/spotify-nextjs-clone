@@ -19,7 +19,7 @@ export default function LandingPage() {
         <div className="row px-3 px-lg-5 align-items-center d-flex">
           <div className="col-8">
             <Link href="/">
-              <a className={styles.logo_app_link}>
+              <a title="Spotify" className={styles.logo_app_link}>
                 <AppLogo width={140} height={43} />
               </a>
             </Link>
@@ -28,17 +28,36 @@ export default function LandingPage() {
             <nav className="w-100 d-none d-xl-flex">
               <ul className={styles.nav_list}>
                 <li>
-                  <a href="/xxx">premium</a>
+                  <a
+                    target={"_blank"}
+                    rel="nopopper norefer"
+                    href="https://www.spotify.com/premium"
+                  >
+                    premium
+                  </a>
                 </li>
                 <li>
-                  <a href="/xxx">support</a>
+                  <a
+                    target={"_blank"}
+                    rel="nopopper norefer"
+                    href="https://support.spotify.com"
+                  >
+                    support
+                  </a>
                 </li>
                 <li>
-                  <a href="/xxx">download</a>
+                  <a
+                    target={"_blank"}
+                    rel="nopopper norefer"
+                    href="https://www.spotify.com/download"
+                  >
+                    download
+                  </a>
                 </li>
               </ul>
             </nav>
             <button
+              title="Change Theme Mode"
               className={styles.app_mode_toggle_btn}
               onClick={() => {
                 setTheme(theme === "light" ? "dark" : "light");
@@ -61,6 +80,7 @@ export default function LandingPage() {
                 anytime
               </p>
               <button
+                title="Login Into Spotify"
                 onClick={() => {
                   router.push(SPOTIFY_LOGIN);
                 }}

@@ -45,7 +45,7 @@ export default connect(
     if (!albumsPlaylists?.items?.length) getTopLikedTracks(token);
     if (!newReleasePlaylists?.items?.length) getNewReleases(token, countryCode);
     if (!browseCategories.length)
-      getBrowseCategories(token, countryCode, 10, 5);
+      getBrowseCategories(token, countryCode, 20, 5);
   }, []);
   return (
     <div className="app_home_page_content_area">

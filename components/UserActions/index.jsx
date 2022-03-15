@@ -8,7 +8,7 @@ export default connect((state) => state)(function ({ user }) {
   return (
     <div className={styles.user_actions_area}>
       <Link href={"/profile"}>
-        <a className={styles.user_profile_btn}>
+        <a title="My Account" className={styles.user_profile_btn}>
           <div className={styles.user_avatar}>
             <Image
               quality={100}
@@ -23,6 +23,7 @@ export default connect((state) => state)(function ({ user }) {
       </Link>
       <div className={styles.logout_btn}>
         <a
+          title="Logout"
           href="logout"
           onClick={(e) => {
             e.preventDefault();

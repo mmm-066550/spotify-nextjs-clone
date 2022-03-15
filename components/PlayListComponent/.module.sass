@@ -40,6 +40,9 @@
             align-items: center
             img
                 border-radius: 50% !important
+            .play_pause_track_btn
+                &.isPlaying
+                    bottom: 0 !important
         .playlist_cover_link
             width: 100% !important
             min-height: 100% !important
@@ -67,6 +70,11 @@
                height: 30px
                margin-left: 4px
                color: var(--bg_color_3)
+            &.isPlaying
+                visibility: visible !important
+                bottom: 10px !important
+                svg
+                    margin-left: 0
     .playlist_title
         overflow: hidden
         display: -webkit-box

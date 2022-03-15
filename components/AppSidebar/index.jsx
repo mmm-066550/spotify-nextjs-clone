@@ -19,11 +19,15 @@ export default function AppSidebar({ style, open, setOpen }) {
           }`}
         >
           <Link href={"/"}>
-            <a className={`${styles.logo_brand_link} ${!open ? "pt-3" : ""}`}>
+            <a
+              title="Spotify"
+              className={`${styles.logo_brand_link} ${!open ? "pt-3" : ""}`}
+            >
               {open ? <AppLogo /> : <AppIcon />}
             </a>
           </Link>
           <button
+            title={open ? "Collapse The Sidebar" : "Expand The Sidebar"}
             onClick={() => {
               setOpen(!open);
               localStorage.setItem("isAsideOpen", !open);

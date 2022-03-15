@@ -8,6 +8,7 @@ import getNewReleases from "./api/getNewReleases";
 import clearReducer from "./clearReducer";
 import getUserCountry from "./getUserCountry";
 import getBrowseCategories from "./api/getBrowseCategories";
+import getCategoryPlaylists from "./api/getCategoryPlaylists";
 export {
   getMe,
   getFeaturedList,
@@ -19,4 +20,5 @@ export {
   clearReducer,
   getUserCountry,
   getBrowseCategories,
+  getCategoryPlaylists,
 };

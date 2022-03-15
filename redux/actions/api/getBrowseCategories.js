@@ -14,7 +14,6 @@ const getBrowseCategories =
           limit: catsLimit || 5,
         },
       });
-      console.log(categories.data.categories.items[0].name);
       const ids = categories.data.categories.items.map((item) => item.id);
       ids.map(async (id, i) => {
         try {
@@ -33,24 +32,22 @@ const getBrowseCategories =
             dispatch({
               type: "GET_BROWSE_CATEGORY_PLAYLISTS",
               payload: {
+                id: ids[i],
                 msg: categories.data.categories.items[i].name,
                 items: res.data.playlists.items,
               },
             });
         } catch (error) {
-          console.log(error);
           dispatch({
             type: "GET_BROWSE_CATEGORY_PLAYLISTS",
-            payload: { msg: "Something wrong happened!", items: [] },
+            payload: { msg: null, items: null },
           });
         }
       });
     } catch (error) {
-      console.log(error);
-
       dispatch({
         type: "GET_BROWSE_CATEGORY_PLAYLISTS",
-        payload: { msg: "Something wrong happened!", items: [] },
+        payload: { msg: null, items: null },
       });
     }
   };

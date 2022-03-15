@@ -19,7 +19,6 @@ const mapDispatchToProps = {
   clearReducer,
   getFeaturedList,
   getNewReleases,
-
   getTopLikedArtists,
   getTopLikedTracks,
 };
@@ -41,7 +40,7 @@ export default connect(
   const router = useRouter();
 
   useEffect(() => {
-    if (!genrePlaylists.items.length)
+    if (!genrePlaylists?.items?.length)
       switch (router.query.genre) {
         case "recently_played":
           getRecentlyPlayedLists(token, 30);
@@ -65,7 +64,6 @@ export default connect(
       clearReducer();
     };
   }, []);
-
   return (
     <>
       <Head>
@@ -85,7 +83,6 @@ export async function getStaticProps() {
     props: {},
   };
 }
-
 export async function getStaticPaths() {
   return {
     paths: [

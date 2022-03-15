@@ -2,11 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   optimizeFonts: false,
+
   images: {
     domains: [
       "i.scdn.co",
       "seed-mix-image.spotifycdn.com",
       "charts-images.scdn.co",
+      "daily-mix.scdn.co",
     ],
   },
   typescript: {

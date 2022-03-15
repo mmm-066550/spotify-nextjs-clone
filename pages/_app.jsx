@@ -17,6 +17,7 @@ import Head from "next/head";
 
 export default function _app({ Component, pageProps }) {
   return (
+    // <>APP</>
     <Provider store={store}>
       <Head>
         <meta name="theme-color" content="#1DB954"></meta>

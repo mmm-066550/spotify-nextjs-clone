@@ -14,7 +14,9 @@ export default function PlaylistsRow({ content, link, placeholder }) {
         )}
         {content?.items?.length && link ? (
           <Link href={link}>
-            <a className={styles.see_all_link}>see all</a>
+            <a title="Browse More Results" className={styles.see_all_link}>
+              see all
+            </a>
           </Link>
         ) : null}
       </div>

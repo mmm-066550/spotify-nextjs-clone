@@ -8,6 +8,7 @@ import AppModeIcon from "../../public/assets/icons/appModeIcon";
 import styles from "./.module.sass";
 import NavLink from "../NavLink";
 import { useTheme } from "next-themes";
+import capitalize from "../../utils/capitalize";
 
 export default function AsideNavList({ open }) {
   const { theme, setTheme } = useTheme("");
@@ -65,6 +66,7 @@ export default function AsideNavList({ open }) {
             if (el.route)
               return (
                 <NavLink
+                  title={capitalize(el.name)}
                   key={el.id}
                   styles={styles}
                   href={el.path}
@@ -80,6 +82,11 @@ export default function AsideNavList({ open }) {
                 <li key={el.id} className={`${styles.app_nav_item}`}>
                   <div className="container">
                     <button
+                      title={
+                        el.path === "/mode"
+                          ? "Change Theme Mode"
+                          : capitalize(el.name)
+                      }
                       className={styles.app_nav_link}
                       onClick={() => {
                         if (el.path === "/mode") {

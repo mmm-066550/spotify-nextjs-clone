@@ -17,6 +17,7 @@ export default (list = { msg: null, items: [] }, action) => {
       items: action.payload.items,
     };
   }
+
   if (action.type === "GET_TOP_LIKED_ARTISTS_ALL") {
     return {
       msg: action.payload.msg,

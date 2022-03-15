@@ -15,13 +15,12 @@ export const AuthGuard = ({
   getUserCountry,
 }) => {
   const router = useRouter();
-
-  useLayoutEffect(() => {
-    if (typeof window !== "undefined")
+  if (typeof window !== "undefined")
+    useLayoutEffect(() => {
       if (window.localStorage.getItem("token") !== "null")
         updateTokenState(window.localStorage.getItem("token"));
-    // getUserCountry();
-  }, []);
+      // getUserCountry();
+    }, []);
 
   useEffect(() => {
     if (router.asPath.startsWith("/#access_token=")) {
