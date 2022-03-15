@@ -31,7 +31,12 @@
             overflow-y: scroll
             position: relative
             &::-webkit-scrollbar
-                display: none
+                width: 5px
+            &::-webkit-scrollbar-track
+                background: var(--bg_color_1)
+            &::-webkit-scrollbar-thumb
+                border-radius: 10px
+                background: var(--text_color)
             .container
                 position: relative
                 margin: 2rem 0
