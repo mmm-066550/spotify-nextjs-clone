@@ -43,7 +43,7 @@ export default connect((state) => state, { getBrowseCategories })(
                 container?.current?.offsetHeight ===
               container?.current?.scrollTop
             ) {
-              if (categoriesPerRender * (offset + 1) <= 40)
+              if (categoriesPerRender * (offset + 1) <= 41)
                 loadMoreCategories();
             }
           }
@@ -88,7 +88,7 @@ export default connect((state) => state, { getBrowseCategories })(
                   ) : null}
                   {children}
                   {router.pathname === "/" &&
-                  categoriesPerRender * (offset + 1) <= 40 ? (
+                  categoriesPerRender * (offset + 1) <= 41 ? (
                     <div className={styles.loading_more_spinner}>
                       <div
                         className={`spinner-grow ${styles.grow_spinner}`}
