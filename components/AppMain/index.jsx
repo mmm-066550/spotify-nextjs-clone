@@ -43,7 +43,8 @@ export default connect((state) => state, { getBrowseCategories })(
                 container?.current?.offsetHeight ===
               container?.current?.scrollTop
             ) {
-              loadMoreCategories();
+              if (categoriesPerRender * (offset + 1) <= 40)
+                loadMoreCategories();
             }
           }
           if (container?.current?.scrollTop >= 400) setscrollBtn(true);
