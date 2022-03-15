@@ -10,7 +10,7 @@ import { getBrowseCategories } from "../../redux/actions";
 import { connect } from "react-redux";
 import { useLayoutEffect } from "react";
 
-export default connect(state=>state,{getBrowseCategories})(function AppMain({token,countryCode, children,getBrowseCategories }) {
+export default connect(state => state, { getBrowseCategories })(function AppMain({ token, countryCode, children, getBrowseCategories }) {
   const [scrollBtn, setscrollBtn] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -34,25 +34,26 @@ export default connect(state=>state,{getBrowseCategories})(function AppMain({tok
         if (!open) setOpen(true);
       }
     };
-    container?.current?.onscroll = () => {
-      if(router.pathname==='/'){
-        if(container?.current?.scrollHeight-container?.current?.offsetHeight===container?.current?.scrollTop){
-          loadMoreCategories()
+    if (container?.current)
+      container?.current?.onscroll = () => {
+        if (router.pathname === '/') {
+          if ((container?.current?.scrollHeight) - (container?.current?.offsetHeight) === container?.current?.scrollTop) {
+            loadMoreCategories()
+          }
         }
+        if (container?.current?.scrollTop >= 400) setscrollBtn(true);
+        if (container?.current?.scrollTop < 100) setscrollBtn(false);
       }
-      if (container?.current?.scrollTop >= 400) setscrollBtn(true);
-      if (container?.current?.scrollTop < 100) setscrollBtn(false);
-    };
   }
 
-  const loadMoreCategories = ()=>{
+  const loadMoreCategories = () => {
     setOffset(offset + 1);
-              getBrowseCategories(
-                token,
-                countryCode,
-                categoriesPerRender,
-                categoriesPerRender * (offset + 1)
-              );
+    getBrowseCategories(
+      token,
+      countryCode,
+      categoriesPerRender,
+      categoriesPerRender * (offset + 1)
+    );
   }
 
   return (
@@ -80,9 +81,9 @@ export default connect(state=>state,{getBrowseCategories})(function AppMain({tok
                   </button>
                 ) : null}
                 {children}
-                {router.pathname==='/' && categoriesPerRender * (offset + 1) <= 40 ?  <div className={styles.loading_more_spinner}><div className={`spinner-grow ${styles.grow_spinner}`} role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div></div>:null}
+                {router.pathname === '/' && categoriesPerRender * (offset + 1) <= 40 ? <div className={styles.loading_more_spinner}><div className={`spinner-grow ${styles.grow_spinner}`} role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div></div> : null}
               </>
             </div>
           </div>

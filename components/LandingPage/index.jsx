@@ -30,7 +30,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     target={"_blank"}
-                    rel="nopopper norefer"
+                    rel="noreferrer noopener"
                     href="https://www.spotify.com/premium"
                   >
                     premium
@@ -39,7 +39,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     target={"_blank"}
-                    rel="nopopper norefer"
+                    rel="noreferrer noopener"
                     href="https://support.spotify.com"
                   >
                     support
@@ -48,7 +48,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     target={"_blank"}
-                    rel="nopopper norefer"
+                    rel="noreferrer noopener"
                     href="https://www.spotify.com/download"
                   >
                     download
