@@ -1,7 +1,7 @@
 import api from "../../../utils/api";
 
 const getBrowseCategories =
-  (token, country, catsLimit, pLimit) => async (dispatch) => {
+  (token, country, cLimit, offset) => async (dispatch) => {
     try {
       const categories = await api.get("/browse/categories", {
         headers: {
@@ -11,7 +11,8 @@ const getBrowseCategories =
         },
         params: {
           country: country || "EG",
-          limit: catsLimit || 5,
+          limit: cLimit || 5,
+          offset: offset || 0,
         },
       });
       const ids = categories.data.categories.items.map((item) => item.id);
@@ -25,7 +26,7 @@ const getBrowseCategories =
             },
             params: {
               country: country || "EG",
-              limit: pLimit || 5,
+              limit: 5,
             },
           });
           if (res.data.playlists.items.length)

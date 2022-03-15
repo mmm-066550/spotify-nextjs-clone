@@ -31,12 +31,12 @@
             overflow-y: scroll
             position: relative
             &::-webkit-scrollbar
+                display: none
                 width: 5px
             &::-webkit-scrollbar-track
                 background: var(--bg_color_1)
             &::-webkit-scrollbar-thumb
-                border-radius: 10px
-                background: var(--text_color)
+                background: var(--bs-gray-400)
             .container
                 position: relative
                 margin: 2rem 0
@@ -66,6 +66,10 @@
                     &:hover
                         background: $main-color
                         color: #fff
+                .loading_more_spinner
+                    margin-top: 2rem
+                    text-align: center
+                    .grow_spinner
     .app_main_bottom_section
         z-index: 2
         box-shadow: 1px 1px 5px #00000015

@@ -3,21 +3,26 @@ import styles from "./.module.sass";
 import AppSidebar from "../AppSidebar";
 import SignupBanner from "../SignupBanner";
 import ActionsTopBar from "../ActionsTopBar";
-import { useLayoutEffect, useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { FiChevronUp } from "react-icons/fi";
+import { getBrowseCategories } from "../../redux/actions";
+import { connect } from "react-redux";
+import { useLayoutEffect } from "react";
 
-export default function AppMain({ children }) {
+export default connect(state=>state,{getBrowseCategories})(function AppMain({token,countryCode, children,getBrowseCategories }) {
   const [scrollBtn, setscrollBtn] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const container = useRef(null);
+  const [categoriesPerRender, _] = useState(1);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     container.current.scrollTop = 0;
   }, [router]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setOpen(JSON.parse(window.localStorage.getItem("isAsideOpen")) || false);
   }, []);
 
@@ -30,9 +35,24 @@ export default function AppMain({ children }) {
       }
     };
     container?.current?.onscroll = () => {
+      if(router.pathname==='/'){
+        if(container?.current?.scrollHeight-container?.current?.offsetHeight===container?.current?.scrollTop){
+          loadMoreCategories()
+        }
+      }
       if (container?.current?.scrollTop >= 400) setscrollBtn(true);
       if (container?.current?.scrollTop < 100) setscrollBtn(false);
     };
+  }
+
+  const loadMoreCategories = ()=>{
+    setOffset(offset + 1);
+              getBrowseCategories(
+                token,
+                countryCode,
+                categoriesPerRender,
+                categoriesPerRender * (offset + 1)
+              );
   }
 
   return (
@@ -45,7 +65,7 @@ export default function AppMain({ children }) {
           setOpen={setOpen}
           style={styles.app_main_sidebar}
         />
-        <div ref={container} className={styles.app_main_func_container}>
+        <div ref={container} className={`${styles.app_main_func_container}`}>
           <div className="position-absolute w-100">
             <ActionsTopBar />
             <div className={styles.container}>
@@ -60,6 +80,9 @@ export default function AppMain({ children }) {
                   </button>
                 ) : null}
                 {children}
+                {router.pathname==='/' && categoriesPerRender * (offset + 1) <= 40 ?  <div className={styles.loading_more_spinner}><div className={`spinner-grow ${styles.grow_spinner}`} role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div></div>:null}
               </>
             </div>
           </div>
@@ -71,3 +94,4 @@ export default function AppMain({ children }) {
     </main>
   );
 }
+)
