@@ -64,7 +64,6 @@ export default connect(
                   },
                 }}
                 modules={[Navigation]}
-                navigation
                 navigation={{
                   nextEl: `.nav_btns .swiper-button-next`,
                   prevEl: `.nav_btns .swiper-button-prev`,
