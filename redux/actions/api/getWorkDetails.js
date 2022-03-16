@@ -2,9 +2,9 @@ import api from "../../../utils/api";
 import FastAverageColor from "fast-average-color";
 const fac = new FastAverageColor();
 
-const getPlaylistDetails = (token, id, country) => async (dispatch) => {
+const getWorkDetails = (token, type, id, country) => async (dispatch) => {
   try {
-    const res = await api.get(`/playlists/${id}`, {
+    const res = await api.get(`/${type}s/${id}`, {
       headers: {
         Authorization: `Bearer ${
           token || window.localStorage.getItem("token")
@@ -35,4 +35,4 @@ const getPlaylistDetails = (token, id, country) => async (dispatch) => {
   }
 };
 
-export default getPlaylistDetails;
+export default getWorkDetails;

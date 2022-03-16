@@ -4,11 +4,13 @@ import styles from "./.module.sass";
 import NextImage from "../../../components/NextImage";
 import { container } from "../../../components/AppMain/.module.sass";
 import { connect } from "react-redux";
-import { getPlaylistDetails, clearReducer } from "../../../redux/actions";
+import { getWorkDetails, clearReducer } from "../../../redux/actions";
 import { useRouter } from "next/router";
+import { MdVerified } from "react-icons/md";
+import Link from "next/link";
 
 const mapStateToProps = (state) => state;
-const mapDispatchToProps = { getPlaylistDetails, clearReducer };
+const mapDispatchToProps = { getWorkDetails, clearReducer };
 
 export default connect(
   mapStateToProps,
@@ -17,13 +19,15 @@ export default connect(
   token,
   countryCode,
   workView,
-  getPlaylistDetails,
+  getWorkDetails,
   clearReducer,
 }) {
   const router = useRouter();
-  const id = router.query.id;
+  const { work, id } = router.query;
   useLayoutEffect(() => {
-    if (id) getPlaylistDetails(token, id, countryCode);
+    if (id)
+      if (["playlist", "artist", "album"].includes(router.query.work))
+        getWorkDetails(token, work, id, countryCode);
     return () => {
       clearReducer();
     };
@@ -49,7 +53,7 @@ export default connect(
             >
               <div
                 className={`${styles.work_cover_container} ${
-                  workView?.type === "artist" ? styles.circled : null
+                  work === "artist" ? styles.circled : null
                 }`}
               >
                 {workView?.images?.length ? (
@@ -69,7 +73,15 @@ export default connect(
             >
               <div className={styles.work_details_container}>
                 {workView?.type ? (
-                  <span>{workView?.type}</span>
+                  <span className={styles.work_type}>
+                    {workView?.type === "artist" ? (
+                      <>
+                        <MdVerified /> Verified Artist
+                      </>
+                    ) : (
+                      workView?.type
+                    )}
+                  </span>
                 ) : (
                   <span className={styles.type_placeholder}></span>
                 )}
@@ -80,20 +92,42 @@ export default connect(
                   <span className={styles.name_placeholder}></span>
                 )}
 
-                {workView?.description ? (
+                {workView?.album_type ||
+                workView?.description ||
+                workView?.genres?.length ? (
                   <>
                     <p className={styles.work_description}>
-                      {workView?.description}
+                      {workView?.description || workView?.genres?.join(", ")}
                     </p>
                     <p className={styles.work_fact}>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      {workView?.type === "playlist" ||
+                      workView?.type === "album" ? (
+                        workView?.type === "album" ? (
+                          <>
+                            <Link href={`/artist/${workView?.artists[0]?.id}`}>
+                              <a>{workView?.artists[0]?.name} </a>
+                            </Link>
+                            <span>{`. ${
+                              workView?.release_date?.split("-")[0]
+                            } . ${workView?.tracks?.items?.length} Tracks . ${
+                              workView?.album_type
+                            } Album`}</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>{workView?.owner?.display_name}</span>
+                            <span>{`. ${workView?.followers?.total} Followers . ${workView?.tracks?.items?.length} Tracks`}</span>
+                          </>
+                        )
+                      ) : (
+                        <span>{workView?.followers?.total} Followers</span>
+                      )}
                     </p>
                   </>
                 ) : (
                   <>
                     <span className={styles.more_placeholder}></span>
                     <span className={styles.more_placeholder}></span>
-
                     <span className={styles.more_placeholder}></span>
                   </>
                 )}
@@ -120,6 +154,6 @@ export default connect(
 //       { params: { work: "artist", id: "" } },
 //       { params: { work: "album", id: "" } },
 //     ],
-//     fallback: false,
+//     fallback: true,
 //   };
 // }

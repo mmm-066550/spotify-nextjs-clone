@@ -20,15 +20,32 @@
                 text-transform: uppercase
                 letter-spacing: 1px
                 font-weight: 500
+            a
+                color: var(--text-color)
             h1
                 font-weight: 700
-                font-size: 5.5rem
+                font-size: 5rem
+                overflow: hidden
+                display: -webkit-box
+                -webkit-line-clamp: 2
+                -webkit-box-orient: vertical
             .work_description
+                display: block
                 color: var(--bs-gray-600)
+                margin-bottom: .5rem
             .work_fact
                 margin: 0
                 font-weight: 300
                 font-size: 13px
+                padding-top: 1rem
+            .work_type
+                display: flex
+                align-items: inline-center
+                line-height: 22px
+                svg
+                    margin-right: 0.5rem
+                    font-size: 22px
+                    fill: var(--bs-blue)
             .type_placeholder,
             .name_placeholder,
             .more_placeholder
@@ -53,7 +70,6 @@
         width: 25%
     .col_xxl_9
         width: 75%
-    
 @media screen and ( max-width: 991px  )
     .work_page_content_wrapper
         .work_info_wrapper
