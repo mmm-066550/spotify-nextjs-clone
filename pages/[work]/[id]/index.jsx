@@ -139,21 +139,21 @@ export default connect(
     </>
   );
 });
-// export async function getStaticProps(context) {
-//   return {
-//     props: {},
-//     notFound:
-//       !context.params.id &&
-//       !["playlist", "artist", "album"].includes(context.params.work),
-//   };
-// }
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { work: "playlist", id: "" } },
-//       { params: { work: "artist", id: "" } },
-//       { params: { work: "album", id: "" } },
-//     ],
-//     fallback: true,
-//   };
-// }
+export async function getStaticProps(context) {
+  return {
+    props: {},
+    notFound:
+      !context.params.id &&
+      !["playlist", "artist", "album"].includes(context.params.work),
+  };
+}
+export async function getStaticPaths() {
+  return {
+    paths: [
+      // { params: { work: "playlist", id: "" } },
+      // { params: { work: "artist", id: "" } },
+      // { params: { work: "album", id: "" } },
+    ],
+    fallback: true,
+  };
+}
