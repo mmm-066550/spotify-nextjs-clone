@@ -34,7 +34,13 @@ const getGenres = (token, country, limit, offset) => async (dispatch) => {
 
         if (res.data.playlists.items.length) {
           const colorInfo = await fac.getColorAsync(
-            res.data.playlists.items[0].images[0].url
+            res.data.playlists.items[0].images[0].url,
+            {
+              ignoredColor: [
+                [255, 255, 255, 255],
+                [0, 0, 0, 255],
+              ],
+            }
           );
           dispatch({
             type: "GET__GENRES",

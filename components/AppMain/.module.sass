@@ -29,7 +29,7 @@
             width: calc( 100% - 90px)
             background: var(--bg_color_2)
             overflow-y: scroll
-            position: relative
+            // position: relative
             &::-webkit-scrollbar
                 display: none
                 width: 5px
@@ -38,8 +38,6 @@
             &::-webkit-scrollbar-thumb
                 background: var(--bs-gray-400)
             .container
-                position: relative
-                margin: 2rem 0
                 padding-left: 32px
                 padding-right: 32px
                 width: 100%
@@ -67,9 +65,12 @@
                         background: $main-color
                         color: #fff
                 .loading_more_spinner
-                    margin-top: 2rem
+                    display: flex
+                    justify-content: center
+                    align-content: center
                     text-align: center
                     .grow_spinner
+                        margin-bottom: 2rem
     .app_main_bottom_section
         z-index: 2
         box-shadow: 1px 1px 5px #00000015

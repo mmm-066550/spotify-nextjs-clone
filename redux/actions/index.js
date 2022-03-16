@@ -10,6 +10,7 @@ import getUserCountry from "./getUserCountry";
 import getBrowseCategories from "./api/getBrowseCategories";
 import getCategoryPlaylists from "./api/getCategoryPlaylists";
 import getGenres from "./api/getGenres";
+import getPlaylistDetails from "./api/getPlaylistDetails";
 export {
   getMe,
   getFeaturedList,
@@ -23,4 +24,5 @@ export {
   getBrowseCategories,
   getCategoryPlaylists,
   getGenres,
+  getPlaylistDetails,
 };

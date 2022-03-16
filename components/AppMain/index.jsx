@@ -73,34 +73,34 @@ export default connect((state) => state, { getBrowseCategories })(
             style={styles.app_main_sidebar}
           />
           <div ref={container} className={`${styles.app_main_func_container}`}>
-            <div className="position-absolute w-100">
-              <ActionsTopBar />
-              <div className={styles.container}>
-                <>
-                  {scrollBtn ? (
-                    <button
-                      title="Scroll To The Top"
-                      className={styles.scroll_top_btn}
-                      onClick={() => (container.current.scrollTop = 0)}
-                    >
-                      <FiChevronUp />
-                    </button>
-                  ) : null}
-                  {children}
-                  {router.pathname === "/" &&
-                  categoriesPerRender * (offset + 1) <= 41 ? (
-                    <div className={styles.loading_more_spinner}>
-                      <div
-                        className={`spinner-grow ${styles.grow_spinner}`}
-                        role="status"
-                      >
-                        <span className="visually-hidden">Loading...</span>
-                      </div>
-                    </div>
-                  ) : null}
-                </>
-              </div>
+            <ActionsTopBar />
+            <div className={styles.container}>
+              <>
+                {scrollBtn ? (
+                  <button
+                    title="Scroll To The Top"
+                    className={styles.scroll_top_btn}
+                    onClick={() => (container.current.scrollTop = 0)}
+                  >
+                    <FiChevronUp />
+                  </button>
+                ) : null}
+              </>
             </div>
+            {children}
+            {router.pathname === "/" &&
+            categoriesPerRender * (offset + 1) <= 41 ? (
+              <div className={styles.container}>
+                <div className={styles.loading_more_spinner}>
+                  <div
+                    className={`spinner-grow ${styles.grow_spinner}`}
+                    role="status"
+                  >
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
         <footer className={styles.app_main_bottom_section}>

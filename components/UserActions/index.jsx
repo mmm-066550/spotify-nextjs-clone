@@ -18,7 +18,7 @@ export default connect((state) => state)(function ({ user }) {
               alt="user_avatar"
             />
           </div>
-          <span>{user?.display_name}</span>
+          <span className="d-none d-md-block">{user?.display_name}</span>
         </a>
       </Link>
       <div className={styles.logout_btn}>
