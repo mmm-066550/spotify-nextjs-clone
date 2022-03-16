@@ -8,6 +8,7 @@ import { getWorkDetails, clearReducer } from "../../../redux/actions";
 import { useRouter } from "next/router";
 import { MdVerified } from "react-icons/md";
 import Link from "next/link";
+import Error from "next/error";
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = { getWorkDetails, clearReducer };
@@ -32,6 +33,8 @@ export default connect(
       clearReducer();
     };
   }, [id]);
+
+  if (!workView) return <Error statusCode={404} />;
 
   return (
     <>
