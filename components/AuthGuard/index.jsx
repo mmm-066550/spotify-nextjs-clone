@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import LandingPage from "../LandingPage";
 import { updateTokenState, getMe, getUserCountry } from "../../redux/actions";
 import LoaderWrapper from "../LoaderWrapper";
-import { useLayoutEffect } from "react";
-
 export const AuthGuard = ({
   user,
   children,

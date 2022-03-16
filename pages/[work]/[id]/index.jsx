@@ -143,8 +143,8 @@ export async function getStaticProps(context) {
   return {
     props: {},
     notFound:
-      !context.params.id &&
-      !["playlist", "artist", "album"].includes(context.params.work),
+      !["playlist", "artist", "album"].includes(context.params.work) ||
+      !context.params.id,
   };
 }
 export async function getStaticPaths(context) {
