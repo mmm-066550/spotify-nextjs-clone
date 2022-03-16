@@ -61,7 +61,7 @@ export default connect(
           break;
       }
     return () => {
-      clearReducer();
+      clearReducer({ msg: null, items: [] });
     };
   }, []);
   return (
