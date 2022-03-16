@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import PlaylistsRow from "../../components/PlaylistsRow";
 import Head from "next/head";
 import capitalize from "../../utils/capitalize";
+import { container } from "../../components/AppMain/.module.sass";
 import {
   getRecentlyPlayedLists,
   getFeaturedList,
@@ -71,8 +72,10 @@ export default connect(
           genrePlaylists?.msg ? capitalize(genrePlaylists?.msg) : "Loading"
         }`}</title>
       </Head>
-      <div className="genre_page_content_area">
-        <PlaylistsRow content={genrePlaylists} placeholder={20} />
+      <div className="genre_page_content_area py-3 my-3">
+        <div className={container}>
+          <PlaylistsRow content={genrePlaylists} placeholder={20} />
+        </div>
       </div>
     </>
   );
