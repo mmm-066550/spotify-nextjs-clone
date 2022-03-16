@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { BsSun, BsMoon } from "react-icons/bs";
+import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 export default function () {
   const { theme } = useTheme("");
   const [isDark, setisDark] = useState(null);
@@ -8,7 +8,7 @@ export default function () {
     if (theme === "dark") setisDark(true);
     if (theme === "light") setisDark(false);
   }, [theme]);
-  if (isDark) return <BsMoon />;
-  if (isDark === false) return <BsSun />;
+  if (isDark) return <IoSunnyOutline />;
+  if (isDark === false) return <IoMoonOutline />;
   if (isDark === null) return <></>;
 }

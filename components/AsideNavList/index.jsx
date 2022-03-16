@@ -70,7 +70,7 @@ export default function AsideNavList({ open }) {
                   key={el.id}
                   styles={styles}
                   href={el.path}
-                  exact
+                  exact={el.path === "/" ? true : false}
                   className={styles.app_nav_link}
                 >
                   {el.icon}

@@ -9,6 +9,7 @@ import newReleasePlaylists from "./newReleaseReducer";
 import genrePlaylists from "./genrePageReducer";
 import countryCode from "./countryCodeReducer";
 import browseCategories from "./browseReducer";
+import allCategories from "./searchGenres";
 
 export default combineReducers({
   user,
@@ -21,4 +22,5 @@ export default combineReducers({
   genrePlaylists,
   countryCode,
   browseCategories,
+  allCategories,
 });

@@ -9,12 +9,11 @@ export default function SearchInput() {
     return (
       <div className={styles.search_form_container}>
         <SearchIcon />
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
-            name="q"
-            id="q"
             placeholder="Artists, songs or podcasts"
+            onChange={(e) => router.push(`/search/${e.target.value}`)}
           />
         </form>
       </div>

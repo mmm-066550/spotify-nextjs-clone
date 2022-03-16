@@ -3,17 +3,28 @@
     display: flex
     align-items: center
     padding: .5rem 0.75rem
-    border:  1px solid var(--bs-gray-400)
     border-radius: 100px
+    background: var(--text_color)
+    background: var(--bg_color)
+    border:  1px solid var(--bs-gray-400)
+
     svg
         width: 22px
         height: 22px
         margin-right: 0.75rem
+        path
+            stroke: var(--bg_color)
+            stroke: var(--text_color)
     input
         border: 0
         outline: none
         width: 225px
         padding-right: 0.5rem
         background: transparent
+        color: var(--bg_color)
+        color: var(--text_color)
         &::placeholder
             font-size: 13px
+            color: var(--bg_color)
+            color: var(--text_color)
+
