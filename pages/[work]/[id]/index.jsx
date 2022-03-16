@@ -144,15 +144,15 @@ export async function getStaticProps(context) {
     props: {},
     notFound:
       !context.params.id &&
-      !["playlist", "artist", "album"].includes(context.params.work)
+      !["playlist", "artist", "album"].includes(context.params.work),
   };
 }
-export async function getStaticPaths() {
+export async function getStaticPaths(context) {
   return {
     paths: [
-      // { params: { work: "playlist", id: "" } },
-      // { params: { work: "artist", id: "" } },
-      // { params: { work: "album", id: "" } },
+      { params: { work: "playlist", id: "/*" } },
+      { params: { work: "artist", id: "/*" } },
+      { params: { work: "album", id: "/*" } },
     ],
     fallback: true,
   };
