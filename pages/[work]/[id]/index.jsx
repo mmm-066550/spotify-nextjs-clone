@@ -30,7 +30,7 @@ export default connect(
       if (["playlist", "artist", "album"].includes(router.query.work))
         getWorkDetails(token, work, id, countryCode);
     return () => {
-      clearReducer();
+      clearReducer({});
     };
   }, [id]);
 
