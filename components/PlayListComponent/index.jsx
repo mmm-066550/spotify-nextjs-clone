@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./.module.sass";
 import { BiPlay, BiPause } from "react-icons/bi";
 import Link from "next/link";
-import Image from "next/image";
+import NextImage from "../NextImage";
 
 export default function PlayListComponent({ playlist }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -17,9 +17,9 @@ export default function PlayListComponent({ playlist }) {
           <Link href={`/${playlist?.type}/${playlist?.id}`}>
             <a className={styles.playlist_cover_link}>
               {playlist ? (
-                <Image
+                <NextImage
                   quality={100}
-                  src={playlist?.images[0]?.url}
+                  path={playlist?.images[0]?.url}
                   layout="responsive"
                   alt={`${playlist.name}_cover`}
                   width={100}

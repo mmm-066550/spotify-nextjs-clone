@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./.module.sass";
-import Image from "next/image";
+import NextImage from "../NextImage";
 import Link from "next/link";
 export default function StyledCategoryComponent({ size, category }) {
   return (
@@ -25,9 +25,9 @@ export default function StyledCategoryComponent({ size, category }) {
           )}
           <div className={styles.category_cover_img_wrapper}>
             {category ? (
-              <Image
+              <NextImage
                 alt={category.id}
-                src={category.cover}
+                path={category.cover}
                 width={100}
                 height={100}
                 layout="responsive"
