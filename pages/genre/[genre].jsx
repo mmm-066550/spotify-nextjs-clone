@@ -72,7 +72,7 @@ export default connect(
           genrePlaylists?.msg ? capitalize(genrePlaylists?.msg) : "Loading"
         }`}</title>
       </Head>
-      <div className="genre_page_content_area py-3 my-3">
+      <div className="genre_page_content_area pt-5 my-5">
         <div className={container}>
           <PlaylistsRow content={genrePlaylists} placeholder={20} />
         </div>

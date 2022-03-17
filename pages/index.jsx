@@ -48,7 +48,7 @@ export default connect(
     if (!browseCategories.length) getBrowseCategories(token, countryCode, 5, 0);
   }, []);
   return (
-    <div className="app_home_page_content_area my-3 py-3">
+    <div className="app_home_page_content_area my-5 pt-5">
       <div className={container}>
         <PlaylistsRow
           link={"/genre/recently_played"}

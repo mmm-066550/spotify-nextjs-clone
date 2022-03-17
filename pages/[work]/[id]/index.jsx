@@ -43,15 +43,15 @@ export default connect(
         <title>Spotify App | {workView?.name || "Loading"}</title>
       </Head>
       <div
-        className={`${styles.work_page_content_wrapper}`}
+        className={`${styles.work_page_content_wrapper} pt-5`}
         style={{
           background: `linear-gradient( to bottom, ${
             workView?.bgColor || "var(--bg_color_4)"
-          } 0%, var(--bg_color) 50%, transparent 100%)`,
+          } 0%, transparent 100%)`,
         }}
       >
-        <div className={`${container} py-5`}>
-          <div className={`row ${styles.work_info_wrapper}`}>
+        <div className={`${container}`}>
+          <div className={`row ${styles.work_info_wrapper} my-5 pt-3`}>
             <div
               className={`col-12 col-md-6 col-lg-5 col-xl-4 ${styles.col_xxl_3}`}
             >
@@ -144,6 +144,7 @@ export default connect(
               </div>
             </div>
           </div>
+          <div>HRER TO COMPLETE</div>
         </div>
       </div>
     </>

@@ -28,9 +28,9 @@ export default connect(
       <Head>
         <title>Spotify App | Search</title>
       </Head>
-      <div className="main_search_page_content_container py-3 my-3">
+      <div className="main_search_page_content_container pt-5 my-5">
         <div className={container}>
-          <section className="top_categories_container">
+          <section className="top_categories_container mt-3">
             <div className="row g-0">
               <h4 className={styles._row_title}>your top categories</h4>
               <div

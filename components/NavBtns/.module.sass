@@ -1,14 +1,29 @@
 .app_nav_btns_container
-    width: 80px
+    width: 90px
     display: flex
     align-items: center
     justify-content: space-between
     .app_nav_btn
         all: unset
         cursor: pointer
+        width: 35px
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 35px
+        border-radius: 50%
+        background: var(--bg_color_3)
+        &:first-of-type
+            svg
+                margin-right: 2px
+        &:last-of-type
+            svg
+                margin-left: 2px
         svg
+            display: block
             width: 24px
             height: 24px
+
         &:disabled
             opacity: 0.3
             cursor: not-allowed

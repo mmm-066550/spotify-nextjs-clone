@@ -1,13 +1,10 @@
 .search_form_container
-    margin-left: 2rem
     display: flex
     align-items: center
-    padding: .5rem 0.75rem
+    padding: .4rem 0.5rem
     border-radius: 100px
     background: var(--text_color)
     background: var(--bg_color)
-    border:  1px solid var(--bs-gray-400)
-
     svg
         width: 22px
         height: 22px
@@ -18,13 +15,15 @@
     input
         border: 0
         outline: none
-        width: 225px
+        max-width: 160px
         padding-right: 0.5rem
         background: transparent
         color: var(--bg_color)
         color: var(--text_color)
         &::placeholder
-            font-size: 13px
+            font-size: 11px
             color: var(--bg_color)
             color: var(--text_color)
-
+@media screen and (min-width: 390px)
+    .search_form_container
+        border:  1px solid var(--bs-gray-400)

@@ -1,8 +1,11 @@
 .user_actions_area
-    display: flex
-    justify-content: flex-end
+    background: var(--bg_color_1)
+    display: inline-flex
     align-items: center
+    padding: .3rem
+    border-radius: 1000px
     .logout_btn
+        padding: 0 .5rem
         a
             color: var(--text-color)
             svg
@@ -10,21 +13,22 @@
                 height: 20px
                 color: var(--bs-gray-500)
     .user_profile_btn
-        color: var(--text-color)
+        text-align: left !important
         display: flex
         align-items: center
+        color: var(--text-color)
         span
-            width: 90px
+            line-height: 15px
+            margin-left: 0.5rem
             font-size: 11px
+            max-width: 90px
         .user_avatar
             display: grid
             place-items: center
-            text-align: center
-            border-radius: 10px
-            margin-right: .75rem
+            border-radius: 50%
             width: 36px
             height: 36px
-            border: 2px solid var(--bs-gray-400)
+            border: 2px solid var(--bs-gray-500)
             img
                 object-fit: cover
-                border-radius: 5px
+                border-radius: 50%

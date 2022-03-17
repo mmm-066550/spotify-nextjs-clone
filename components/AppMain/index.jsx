@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import styles from "./.module.sass";
 import AppSidebar from "../AppSidebar";
 import SignupBanner from "../SignupBanner";
@@ -8,11 +8,11 @@ import { useRouter } from "next/router";
 import { FiChevronUp } from "react-icons/fi";
 import { getBrowseCategories } from "../../redux/actions";
 import { connect } from "react-redux";
-import { useLayoutEffect } from "react";
 
 export default connect((state) => state, { getBrowseCategories })(
   function AppMain({ token, countryCode, children, getBrowseCategories }) {
     const [scrollBtn, setscrollBtn] = useState(false);
+    const [isSticky, setisSticky] = useState(false);
     const [open, setOpen] = useState(false);
     const router = useRouter();
     const container = useRef(null);
@@ -47,8 +47,14 @@ export default connect((state) => state, { getBrowseCategories })(
                 loadMoreCategories();
             }
           }
-          if (container?.current?.scrollTop >= 400) setscrollBtn(true);
-          if (container?.current?.scrollTop < 100) setscrollBtn(false);
+          if (container?.current?.scrollTop >= 100) {
+            setisSticky(true);
+            setscrollBtn(true);
+          }
+          if (container?.current?.scrollTop < 100) {
+            setscrollBtn(false);
+            setisSticky(false);
+          }
         };
     }
 
@@ -73,7 +79,7 @@ export default connect((state) => state, { getBrowseCategories })(
             style={styles.app_main_sidebar}
           />
           <div ref={container} className={`${styles.app_main_func_container}`}>
-            <ActionsTopBar />
+            <ActionsTopBar isSticky={isSticky} />
             <div className={styles.container}>
               <>
                 {scrollBtn ? (
