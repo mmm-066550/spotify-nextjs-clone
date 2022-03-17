@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { MdVerified } from "react-icons/md";
 import Link from "next/link";
 import Error from "next/error";
+import numerize from "../../../utils/numerize";
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = { getWorkDetails, clearReducer };
@@ -119,11 +120,17 @@ export default connect(
                         ) : (
                           <>
                             <span>{workView?.owner?.display_name}</span>
-                            <span>{`. ${workView?.followers?.total} Followers . ${workView?.tracks?.items?.length} Tracks`}</span>
+                            <span>{`. ${numerize(
+                              workView?.followers?.total
+                            )} Followers . ${
+                              workView?.tracks?.items?.length
+                            } Tracks`}</span>
                           </>
                         )
                       ) : (
-                        <span>{workView?.followers?.total} Followers</span>
+                        <span>
+                          {numerize(workView?.followers?.total)} Followers
+                        </span>
                       )}
                     </p>
                   </>
