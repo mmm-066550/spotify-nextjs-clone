@@ -28,11 +28,6 @@ export default connect((state) => state, { getBrowseCategories })(
     }, []);
 
     if (typeof window !== "undefined") {
-      if (window.innerWidth < 991) {
-        if (open) setOpen(false);
-      } else {
-        if (!open) setOpen(true);
-      }
       window.onresize = () => {
         if (window.innerWidth < 991) {
           if (open) setOpen(false);
@@ -52,7 +47,7 @@ export default connect((state) => state, { getBrowseCategories })(
                 loadMoreCategories();
             }
           }
-          if (container?.current?.scrollTop >= 100) {
+          if (container?.current?.scrollTop >= 200) {
             setisSticky(true);
             setscrollBtn(true);
           }
