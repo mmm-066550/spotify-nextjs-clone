@@ -12,6 +12,7 @@ import Error from "next/error";
 import numerize from "../../../utils/numerize";
 import PlayPauseBtn from "../../../components/PlayPauseBtn";
 import TracksTable from "../../../components/TracksTable";
+import PlaylistRow from "../../../components/PlaylistsRow";
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = { getWorkDetails, clearReducer };
@@ -49,9 +50,13 @@ export default connect(
       </Head>
       <div
         className={`${styles.work_page_content_wrapper} pt-5`}
-        style={{
-          background: `linear-gradient( to bottom, ${workView?.bgColor} 20%, transparent 100%)`,
-        }}
+        style={
+          workView?.bgColor
+            ? {
+                background: `linear-gradient( to bottom, ${workView?.bgColor} 20%, transparent 100%)`,
+              }
+            : null
+        }
       >
         <div className={`${container}`}>
           <div className={`row ${styles.work_info_wrapper} mt-5 pt-2`}>
@@ -60,7 +65,7 @@ export default connect(
             >
               <div
                 className={`${styles.work_cover_container} ${
-                  work === "artist" ? styles.circled : null
+                  work === "artist" ? styles.circledxxxxx : null
                 }`}
               >
                 {workView?.images?.length ? (
@@ -103,9 +108,13 @@ export default connect(
                 workView?.description ||
                 workView?.genres?.length ? (
                   <>
-                    <p className={styles.work_description}>
-                      {workView?.description || workView?.genres?.join(", ")}
-                    </p>
+                    <p
+                      className={styles.work_description}
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          workView?.description || workView?.genres?.join(", "),
+                      }}
+                    ></p>
                     <p className={styles.work_fact}>
                       {workView?.type === "playlist" ||
                       workView?.type === "album" ? (
@@ -118,7 +127,7 @@ export default connect(
                               workView?.release_date?.split("-")[0]
                             } . ${workView?.tracks?.items?.length} Tracks . ${
                               workView?.album_type
-                            } Album`}</span>
+                            }`}</span>
                           </>
                         ) : (
                           <>
@@ -159,6 +168,19 @@ export default connect(
         </div>
         {work === "playlist" || work === "album" ? (
           <TracksTable tracks={workView?.tracks?.items} type={work} />
+        ) : null}
+        {workView?.artists?.length && work === "album" ? (
+          <div className="more_tracks_by_artist pb-5">
+            <div className={container}>
+              <PlaylistRow
+                placeholder={5}
+                content={{
+                  msg: `More by ${workView?.artists[0]?.name}`,
+                  items: workView?.moreAlbums,
+                }}
+              />
+            </div>
+          </div>
         ) : null}
       </div>
     </>

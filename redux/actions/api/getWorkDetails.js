@@ -20,13 +20,36 @@ const getWorkDetails = (token, type, id, country) => async (dispatch) => {
         [0, 0, 0, 255],
       ],
     });
-    dispatch({
-      type: "GET_PLAYLIST|ARTIST|ALBUM__VIEW",
-      payload: {
-        ...res.data,
-        bgColor: colorInfo.hex,
-      },
-    });
+    if (type === "album") {
+      const artist = res.data.artists[0].id;
+      const moreAlbums = await api.get(`/artists/${artist}/albums`, {
+        headers: {
+          Authorization: `Bearer ${
+            token || window.localStorage.getItem("token")
+          }`,
+        },
+        params: {
+          limit: 5,
+        },
+      });
+      dispatch({
+        type: "GET_PLAYLIST|ARTIST|ALBUM__VIEW",
+        payload: {
+          ...res.data,
+          bgColor: colorInfo.hex,
+          moreAlbums: moreAlbums.data.items || [],
+        },
+      });
+      // }
+    } else {
+      dispatch({
+        type: "GET_PLAYLIST|ARTIST|ALBUM__VIEW",
+        payload: {
+          ...res.data,
+          bgColor: colorInfo.hex,
+        },
+      });
+    }
   } catch (error) {
     dispatch({
       type: "GET_PLAYLIST|ARTIST|ALBUM__VIEW",

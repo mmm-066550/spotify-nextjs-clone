@@ -5,7 +5,6 @@ import Image from "next/image";
 import moment from "moment";
 
 export default function TrackComponent({ track, type }) {
-  console.log(track);
   return (
     <div className={styles.track_component_row}>
       <div className="row align-items-center py-2 my-2 px-md-4">
