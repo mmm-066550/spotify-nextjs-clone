@@ -157,8 +157,8 @@ export default connect(
             </span>
           </div>
         </div>
-        {work === "playlist" ? (
-          <TracksTable tracks={workView?.tracks?.items} />
+        {work === "playlist" || work === "album" ? (
+          <TracksTable tracks={workView?.tracks?.items} type={work} />
         ) : null}
       </div>
     </>

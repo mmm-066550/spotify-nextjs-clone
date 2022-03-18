@@ -4,7 +4,7 @@ import { BiTimeFive } from "react-icons/bi";
 import { container } from "../AppMain/.module.sass";
 import TrackComponent from "../TrackComponent";
 
-export default function TracksTable({ tracks }) {
+export default function TracksTable({ tracks, type }) {
   const tableHead = useRef();
   const [isTopFixed, setisTopFixed] = useState(false);
   useEffect(() => {
@@ -46,20 +46,20 @@ export default function TracksTable({ tracks }) {
               )}
             </div>
             <div className="col-12 col-md-4 col-lg-3 d-none d-md-block">
-              {tracks?.length ? (
+              {tracks?.length && type === "playlist" ? (
                 <span>album</span>
-              ) : (
+              ) : type === "playlist" ? (
                 <span className={styles._playlist_placeholder}></span>
-              )}
+              ) : null}
             </div>
-            <div className="col-12 col-lg-3 d-none d-lg-block">
-              {tracks?.length ? (
+            <div className="col-12 col-lg-2  d-none d-lg-block">
+              {tracks?.length && type === "playlist" ? (
                 <span>data added</span>
-              ) : (
+              ) : type === "playlist" ? (
                 <span className={styles._playlist_placeholder}></span>
-              )}
+              ) : null}
             </div>
-            <div className="col-12 col-sm-2 col-lg-1 d-none d-sm-block text-end">
+            <div className="col-12  col-sm-2 col-lg-2 d-none d-sm-block text-end">
               <span className="text-end">
                 {tracks?.length ? (
                   <BiTimeFive />
@@ -74,10 +74,16 @@ export default function TracksTable({ tracks }) {
       <div className="playlist_tracks_container pt-4 pb-5">
         <div className={container}>
           {tracks?.length
-            ? tracks.map((track, i) => (
-                <TrackComponent key={i} track={{ ...track, index: i }} />
+            ? tracks?.map((track, i) => (
+                <TrackComponent
+                  key={i}
+                  track={{ ...track, index: i + 1 }}
+                  type={type}
+                />
               ))
-            : [...Array(15)].map((_, i) => <TrackComponent key={i} />)}
+            : [...Array(15)].map((_, i) => (
+                <TrackComponent key={i} type={type} />
+              ))}
         </div>
       </div>
     </div>
