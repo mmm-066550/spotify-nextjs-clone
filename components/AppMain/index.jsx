@@ -24,7 +24,12 @@ export default connect((state) => state, { getBrowseCategories })(
     }, [router]);
 
     useLayoutEffect(() => {
-      setOpen(JSON.parse(window.localStorage.getItem("isAsideOpen")) || false);
+      if (typeof window !== "undefined")
+        if (window.innerWidth < 991) setOpen(false);
+        else
+          setOpen(
+            JSON.parse(window.localStorage.getItem("isAsideOpen")) || false
+          );
     }, []);
 
     if (typeof window !== "undefined") {
