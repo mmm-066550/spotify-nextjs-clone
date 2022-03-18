@@ -81,9 +81,16 @@ export default connect(
   );
 });
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   return {
     props: {},
+    notFound: ![
+      "recently_played",
+      "featured_playlists",
+      "top_albums",
+      "top_artists",
+      "new_releases",
+    ].includes(context?.params?.genre),
   };
 }
 export async function getStaticPaths() {

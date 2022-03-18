@@ -3,10 +3,15 @@ import styles from "./.module.sass";
 import NavBtns from "../NavBtns";
 import SearchInput from "../SearchInput";
 import UserActions from "../UserActions";
+import { connect } from "react-redux";
 
-export default function ActionsTopBar({ isSticky }) {
+export default connect((state) => state)(function ActionsTopBar({
+  isSticky,
+  workView,
+}) {
   return (
     <header
+      style={isSticky ? { background: workView?.bgColor } : null}
       className={`${styles.actions_top_bar} ${
         isSticky ? styles.stick_top : null
       }`}
@@ -26,4 +31,4 @@ export default function ActionsTopBar({ isSticky }) {
       </div>
     </header>
   );
-}
+});

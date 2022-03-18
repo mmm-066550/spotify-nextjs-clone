@@ -1,13 +1,13 @@
 .work_page_content_wrapper
     height: 500px
-    background: linear-gradient( to bottom, #49BF43 0%, transparent 100%)
+    background: linear-gradient( to bottom, var(--bg_color_4) 0%, transparent 100%)
     .work_info_wrapper
         align-items: flex-end
         .work_cover_container
             width: 100%
             min-height: 247.5px
             background: var(--bg_color_4)
-            box-shadow: 1px 1px 15px #00000020
+            box-shadow: 1px 1px 15px #00000050
             img
             &.circled
                 border-radius: 50%
@@ -29,16 +29,15 @@
                 display: -webkit-box
                 -webkit-line-clamp: 2
                 -webkit-box-orient: vertical
+                padding: .75rem 0
             .work_description
                 display: block
-                // color: var(--bs-gray-600)
+                margin-bottom: 0.25rem
                 color: var(--text-color)
-                margin-bottom: .5rem
             .work_fact
                 margin: 0
                 font-weight: 300
                 font-size: 13px
-                padding-top: 1rem
             .work_type
                 display: flex
                 align-items: inline-center
@@ -66,6 +65,8 @@
                 &:last-of-type
                     margin-top: 1.5rem
                     margin-bottom: 0
+    .work_actions_wrapper
+        display: flex
 @media screen and ( min-width: 1366px )
     .col_xxl_3
         width: 25%
@@ -77,7 +78,6 @@
             .work_details_container
                 h1
                     font-size: 4rem
-                    margin-bottom: 2rem
 @media screen and ( max-width: 575px  )
     .work_page_content_wrapper
         .work_info_wrapper

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from "./.module.sass";
-import { BiPlay, BiPause } from "react-icons/bi";
 import Link from "next/link";
 import NextImage from "../NextImage";
+import PlayPauseBtn from "../PlayPauseBtn";
 
 export default function PlayListComponent({ playlist }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setisPlaying] = useState(false);
   return (
     <div className={`col-12 col-sm-6 col-md-4 col-xl-3  ${styles.col_xxl_2_5}`}>
       <div className={styles.playlist_component_styled}>
@@ -30,16 +30,17 @@ export default function PlayListComponent({ playlist }) {
             </a>
           </Link>
           {playlist ? (
-            <button
-              onClick={() => {
-                setIsPlaying(!isPlaying);
-              }}
-              className={`${styles.play_pause_track_btn} ${
+            <div
+              className={`${styles.playlist_play_pause_btn_container} ${
                 isPlaying ? styles.isPlaying : null
               }`}
             >
-              {isPlaying ? <BiPause /> : <BiPlay />}
-            </button>
+              <PlayPauseBtn
+                size={40}
+                isPlaying={isPlaying}
+                setisPlaying={setisPlaying}
+              />
+            </div>
           ) : null}
         </div>
         {playlist ? (

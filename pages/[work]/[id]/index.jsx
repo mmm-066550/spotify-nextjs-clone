@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import Head from "next/head";
 import styles from "./.module.sass";
 import NextImage from "../../../components/NextImage";
@@ -10,6 +10,8 @@ import { MdVerified } from "react-icons/md";
 import Link from "next/link";
 import Error from "next/error";
 import numerize from "../../../utils/numerize";
+import PlayPauseBtn from "../../../components/PlayPauseBtn";
+import TracksTable from "../../../components/TracksTable";
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = { getWorkDetails, clearReducer };
@@ -26,17 +28,20 @@ export default connect(
 }) {
   const router = useRouter();
   const { work, id } = router.query;
+  const [isFound, setisFound] = useState(false);
+  const [isPlaying, setisPlaying] = useState(false);
+
   useLayoutEffect(() => {
-    if (id)
-      if (["playlist", "artist", "album"].includes(router.query.work))
-        getWorkDetails(token, work, id, countryCode);
+    if (["playlist", "artist", "album"].includes(work) && id) {
+      setisFound(true);
+      getWorkDetails(token, work, id, countryCode);
+    }
     return () => {
       clearReducer({});
     };
   }, [id]);
 
-  if (!workView) return <Error statusCode={404} />;
-
+  if (!isFound && !workView) return <Error statusCode={404} />;
   return (
     <>
       <Head>
@@ -45,13 +50,11 @@ export default connect(
       <div
         className={`${styles.work_page_content_wrapper} pt-5`}
         style={{
-          background: `linear-gradient( to bottom, ${
-            workView?.bgColor || "var(--bg_color_4)"
-          } 0%, transparent 100%)`,
+          background: `linear-gradient( to bottom, ${workView?.bgColor} 20%, transparent 100%)`,
         }}
       >
         <div className={`${container}`}>
-          <div className={`row ${styles.work_info_wrapper} my-5 pt-3`}>
+          <div className={`row ${styles.work_info_wrapper} mt-5 pt-2`}>
             <div
               className={`col-12 col-md-6 col-lg-5 col-xl-4 ${styles.col_xxl_3}`}
             >
@@ -119,7 +122,7 @@ export default connect(
                           </>
                         ) : (
                           <>
-                            <span>{workView?.owner?.display_name}</span>
+                            <span>{workView?.owner?.display_name} </span>
                             <span>{`. ${numerize(
                               workView?.followers?.total
                             )} Followers . ${
@@ -144,8 +147,19 @@ export default connect(
               </div>
             </div>
           </div>
-          <div>HRER TO COMPLETE</div>
+          <div className={styles.work_actions_wrapper}>
+            <span className="PP_btn_wrapper pt-5 pb-4">
+              <PlayPauseBtn
+                size={50}
+                isPlaying={isPlaying}
+                setisPlaying={setisPlaying}
+              />
+            </span>
+          </div>
         </div>
+        {work === "playlist" ? (
+          <TracksTable tracks={workView?.tracks?.items} />
+        ) : null}
       </div>
     </>
   );
@@ -158,13 +172,9 @@ export async function getStaticProps(context) {
       !context.params.id,
   };
 }
-export async function getStaticPaths(context) {
+export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { work: "playlist", id: "/*" } },
-      { params: { work: "artist", id: "/*" } },
-      { params: { work: "album", id: "/*" } },
-    ],
+    paths: [],
     fallback: true,
   };
 }

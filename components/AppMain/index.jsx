@@ -28,6 +28,11 @@ export default connect((state) => state, { getBrowseCategories })(
     }, []);
 
     if (typeof window !== "undefined") {
+      if (window.innerWidth < 991) {
+        if (open) setOpen(false);
+      } else {
+        if (!open) setOpen(true);
+      }
       window.onresize = () => {
         if (window.innerWidth < 991) {
           if (open) setOpen(false);
@@ -43,7 +48,7 @@ export default connect((state) => state, { getBrowseCategories })(
                 container?.current?.offsetHeight ===
               container?.current?.scrollTop
             ) {
-              if (categoriesPerRender * (offset + 1) <= 41)
+              if (categoriesPerRender * (offset + 1) <= 40)
                 loadMoreCategories();
             }
           }

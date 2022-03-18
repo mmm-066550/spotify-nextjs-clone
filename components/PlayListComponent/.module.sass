@@ -12,11 +12,11 @@
     &:hover
         background: var(--bg_color_4)
         .playlist_cover_wrapper
-            .play_pause_track_btn
+            .playlist_play_pause_btn_container
                 visibility: visible !important
                 bottom: 10px !important
             &.circled
-                .play_pause_track_btn
+                .playlist_play_pause_btn_container
                     bottom: 0px !important
     a
         color: var(--text-color)
@@ -40,7 +40,7 @@
             align-items: center
             img
                 border-radius: 50% !important
-            .play_pause_track_btn
+            .playlist_play_pause_btn_container
                 &.isPlaying
                     bottom: 0 !important
         .playlist_cover_link
@@ -49,32 +49,17 @@
             img
                 user-select: none !important
                 pointer-events: none !important
-        .play_pause_track_btn
+        .playlist_play_pause_btn_container
             z-index: 2
             position: absolute
-            outline: none
             border: 0
             bottom: 0
             right: 10px
-            width: 40px
-            height: 40px
-            border-radius: 50%
-            background: $main-color
-            display: grid
-            place-items: center
             visibility: hidden
             transition: bottom .3s linear
-            box-shadow: 1px 1px 5px #000000a9
-            svg
-               width: 30px
-               height: 30px
-               margin-left: 4px
-               color: var(--bg_color_3)
             &.isPlaying
                 visibility: visible !important
                 bottom: 10px !important
-                svg
-                    margin-left: 0
     .playlist_title
         overflow: hidden
         display: -webkit-box
@@ -101,9 +86,9 @@
 @media screen and ( max-width: 991px )
     .playlist_component_styled
         .playlist_cover_wrapper
-            .play_pause_track_btn
+            .playlist_play_pause_btn_container
                 visibility: visible !important
                 bottom: 10px !important
             &.circled
-                .play_pause_track_btn
+                .playlist_play_pause_btn_container
                     bottom: 0px !important
