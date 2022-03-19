@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { getWorkDetails, clearReducer } from "../../../redux/actions";
 import { useRouter } from "next/router";
 import VerifiedIcon from "../../../public/assets/icons/verified";
-import { MdVerified } from "react-icons/md";
 import Link from "next/link";
 import Error from "next/error";
 import numerize from "../../../utils/numerize";
@@ -66,7 +65,7 @@ export default connect(
             >
               <div
                 className={`${styles.work_cover_container} ${
-                  work === "artist" ? styles.circledxxxxx : null
+                  work === "artist" ? styles.circled : null
                 }`}
               >
                 {workView?.images?.length ? (
