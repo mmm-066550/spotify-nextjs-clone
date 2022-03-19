@@ -11,7 +11,11 @@ export default function TrackComponent({ track, type, link, image }) {
         <div className="col-12 col-sm-10 col-md-6 col-lg-5 d-flex align-items-center">
           <span className={`${styles.track_index}`}>
             {track ? (
-              ("0" + track?.index).slice(-2)
+              track?.index < 10 ? (
+                `0${track?.index}`
+              ) : (
+                track?.index
+              )
             ) : (
               <span className={styles.icon_playlist_placeholder}></span>
             )}
