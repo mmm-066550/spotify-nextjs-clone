@@ -59,7 +59,7 @@ export default connect(
         }
       >
         <div className={`${container}`}>
-          <div className={`row align-items-center ${styles.work_info_wrapper} mt-5 pt-2`}>
+          <div className={`row ${work==='artist'?'align-items-center':null} ${styles.work_info_wrapper} mt-5 pt-2`}>
             <div
               className={`col-12 col-md-6 col-lg-5 col-xl-4 ${styles.col_xxl_3}`}
             >
