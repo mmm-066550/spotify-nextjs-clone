@@ -6,6 +6,7 @@ import { container } from "../../../components/AppMain/.module.sass";
 import { connect } from "react-redux";
 import { getWorkDetails, clearReducer } from "../../../redux/actions";
 import { useRouter } from "next/router";
+import VerifiedIcon from "../../../public/assets/icons/verified";
 import { MdVerified } from "react-icons/md";
 import Link from "next/link";
 import Error from "next/error";
@@ -88,7 +89,7 @@ export default connect(
                   <span className={styles.work_type}>
                     {workView?.type === "artist" ? (
                       <>
-                        <MdVerified /> Verified Artist
+                        <VerifiedIcon /> Verified Artist
                       </>
                     ) : (
                       workView?.type
@@ -146,13 +147,15 @@ export default connect(
                       )}
                     </p>
                   </>
-                ) : (
+                ) : workView?.type !== "artist" ? (
                   <>
-                    <span className={styles.more_placeholder}></span>
-                    <span className={styles.more_placeholder}></span>
-                    <span className={styles.more_placeholder}></span>
+                    <>
+                      <span className={styles.more_placeholder}></span>
+                      <span className={styles.more_placeholder}></span>
+                      <span className={styles.more_placeholder}></span>
+                    </>
                   </>
-                )}
+                ) : null}
               </div>
             </div>
           </div>
@@ -167,7 +170,12 @@ export default connect(
           </div>
         </div>
         {work === "playlist" || work === "album" ? (
-          <TracksTable tracks={workView?.tracks?.items} type={work} />
+          <TracksTable
+            image={work === "playlist"}
+            link
+            tracks={workView?.tracks?.items}
+            type={work}
+          />
         ) : null}
         {workView?.artists?.length && work === "album" ? (
           <div className="more_tracks_by_artist pb-5">
@@ -181,6 +189,34 @@ export default connect(
               />
             </div>
           </div>
+        ) : null}
+        {work === "artist" ? (
+          <>
+            <TracksTable
+              image={true}
+              link={false}
+              tracks={workView?.moreTracks}
+              type={work}
+            />
+            <div className="more_tracks_by_artist pb-5">
+              <div className={container}>
+                <PlaylistRow
+                  placeholder={5}
+                  content={{
+                    msg: `Popular releases`,
+                    items: workView?.moreAlbums,
+                  }}
+                />
+                <PlaylistRow
+                  placeholder={5}
+                  content={{
+                    msg: `Fans also like`,
+                    items: workView?.moreArtists,
+                  }}
+                />
+              </div>
+            </div>
+          </>
         ) : null}
       </div>
     </>

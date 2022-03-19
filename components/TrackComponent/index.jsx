@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import moment from "moment";
 
-export default function TrackComponent({ track, type }) {
+export default function TrackComponent({ track, type, link, image }) {
   return (
     <div className={styles.track_component_row}>
       <div className="row align-items-center py-2 my-2 px-md-4">
@@ -17,19 +17,25 @@ export default function TrackComponent({ track, type }) {
             )}
           </span>
           <span className={`${styles.track_title} px-2`}>
-            {track?.track?.album?.images ? (
+            {image ? (
               <div className={`${styles.track_cover_wrapper} me-3`}>
-                <Image
-                  src={
-                    track?.track?.album?.images
-                      ?.slice(0)
-                      .reverse()
-                      .find((el) => el.url).url
-                  }
-                  layout="fixed"
-                  width={40}
-                  height={40}
-                />
+                {track?.track?.album?.images || track?.album?.images ? (
+                  <Image
+                    src={
+                      track?.album?.images
+                        ?.slice(0)
+                        .reverse()
+                        .find((el) => el.url).url ||
+                      track?.track?.album?.images
+                        ?.slice(0)
+                        .reverse()
+                        .find((el) => el.url).url
+                    }
+                    layout="fixed"
+                    width={40}
+                    height={40}
+                  />
+                ) : null}
               </div>
             ) : null}
             <div className={`${styles.track_name_artist}`}>
@@ -42,16 +48,24 @@ export default function TrackComponent({ track, type }) {
               </span>
               {track ? (
                 <span>
-                  {track?.track?.album?.artists?.map((artist, i) => (
-                    <Link key={i} href={`/artist/${artist?.id}`}>
-                      <a className={styles.track_artist_link}>{artist?.name}</a>
-                    </Link>
-                  ))}
-                  {track?.artists?.map((artist, i) => (
-                    <Link key={i} href={`/artist/${artist?.id}`}>
-                      <a className={styles.track_artist_link}>{artist?.name}</a>
-                    </Link>
-                  ))}
+                  {link
+                    ? track?.track?.album?.artists?.map((artist, i) => (
+                        <Link key={i} href={`/artist/${artist?.id}`}>
+                          <a className={styles.track_artist_link}>
+                            {artist?.name}
+                          </a>
+                        </Link>
+                      ))
+                    : null}
+                  {link
+                    ? track?.artists?.map((artist, i) => (
+                        <Link key={i} href={`/artist/${artist?.id}`}>
+                          <a className={styles.track_artist_link}>
+                            {artist?.name}
+                          </a>
+                        </Link>
+                      ))
+                    : null}
                 </span>
               ) : (
                 <span className={`${styles._playlist_placeholder} w-50`}></span>

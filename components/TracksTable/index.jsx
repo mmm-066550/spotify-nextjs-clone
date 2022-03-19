@@ -4,7 +4,7 @@ import { BiTimeFive } from "react-icons/bi";
 import { container } from "../AppMain/.module.sass";
 import TrackComponent from "../TrackComponent";
 
-export default function TracksTable({ tracks, type }) {
+export default function TracksTable({ tracks, type, link, image }) {
   const tableHead = useRef();
   const [isTopFixed, setisTopFixed] = useState(false);
   useEffect(() => {
@@ -76,13 +76,15 @@ export default function TracksTable({ tracks, type }) {
           {tracks?.length
             ? tracks?.map((track, i) => (
                 <TrackComponent
+                  link={link}
                   key={i}
                   track={{ ...track, index: i + 1 }}
                   type={type}
+                  image={image}
                 />
               ))
             : [...Array(15)].map((_, i) => (
-                <TrackComponent key={i} type={type} />
+                <TrackComponent image={image} link={link} key={i} type={type} />
               ))}
         </div>
       </div>
