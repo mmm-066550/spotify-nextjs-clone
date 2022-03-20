@@ -39,7 +39,7 @@ export default connect(
                   quality={100}
                   path={playlist?.images[0]?.url}
                   layout="responsive"
-                  alt={`${playlist.name}_cover`}
+                  alt={`${playlist?.name}_cover`}
                   width={100}
                   height={100}
                   priority

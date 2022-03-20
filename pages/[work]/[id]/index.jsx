@@ -73,15 +73,11 @@ export default connect(
         }
       >
         <div className={`${container}`}>
-<<<<<<< Updated upstream
-          <div className={`row ${work==='artist'?'align-items-center':null} ${styles.work_info_wrapper} mt-5 pt-2`}>
-=======
           <div
-            className={`row ${styles.work_info_wrapper} ${
+            className={`row ${
               work === "artist" ? "align-items-center" : null
-            } mt-5 pt-2`}
+            } ${styles.work_info_wrapper} mt-5 pt-2`}
           >
->>>>>>> Stashed changes
             <div
               className={`col-12 col-md-6 col-lg-5 col-xl-4 ${styles.col_xxl_3}`}
             >

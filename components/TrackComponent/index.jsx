@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./.module.sass";
 import Link from "next/link";
-import Image from "next/image";
 import moment from "moment";
+import NextImage from "../NextImage";
 
 export default function TrackComponent({ track, type, link, image }) {
   return (
@@ -24,8 +24,8 @@ export default function TrackComponent({ track, type, link, image }) {
             {image ? (
               <div className={`${styles.track_cover_wrapper} me-3`}>
                 {track?.track?.album?.images || track?.album?.images ? (
-                  <Image
-                    src={
+                  <NextImage
+                    path={
                       track?.album?.images
                         ?.slice(0)
                         .reverse()
@@ -38,6 +38,7 @@ export default function TrackComponent({ track, type, link, image }) {
                     layout="fixed"
                     width={40}
                     height={40}
+                    alt={track?.track?.name || track?.name}
                   />
                 ) : null}
               </div>
