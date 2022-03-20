@@ -14,13 +14,16 @@ function PlayPauseBtn({
   playPauseTrack,
   token,
   deviceID,
+  spotifyPlayer,
 }) {
   if (token && deviceID && uri)
     return (
       <button
         style={{ minHeight: `${size}px`, minWidth: `${size}px` }}
         onClick={() => {
-          !isPlaying ? playPauseTrack(deviceID, token, uri) : null;
+          !isPlaying
+            ? playPauseTrack(deviceID, token, uri)
+            : spotifyPlayer?.player?.pause();
         }}
         className={`${styles.play_pause_track_btn} ${
           isPlaying ? styles.isPlaying : null

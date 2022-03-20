@@ -70,12 +70,13 @@ export const AudioPlayer = ({
           if (device_id) playPauseTrack(device_id, token);
           player?.getCurrentState().then((res) => {
             res ? setPlayerState(res) : setPlayerState(playerState);
+            res?.context ? setSpotifyPlayer({ ...res, player }) : null;
           });
           player?.addListener("player_state_changed", (state) => {
             if (state) {
               player?.getCurrentState().then((res) => {
                 res ? setPlayerState(res) : setPlayerState(playerState);
-                res?.context ? setSpotifyPlayer(res) : null;
+                res?.context ? setSpotifyPlayer({ ...res, player }) : null;
               });
             }
           });
