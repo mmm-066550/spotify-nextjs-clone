@@ -125,7 +125,8 @@ export default connect((state) => state, {
         </div>
       </div>
       <footer className={styles.app_main_bottom_section}>
-        {user?.product !== "premium" ? <SignupBanner /> : <AudioPlayer />}
+        <AudioPlayer />
+        {/* {user?.product !== "premium" ? <SignupBanner /> : <AudioPlayer />} */}
       </footer>
     </main>
   );
