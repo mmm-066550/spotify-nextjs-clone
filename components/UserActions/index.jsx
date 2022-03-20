@@ -28,7 +28,7 @@ export default connect((state) => state)(function ({ user }) {
           onClick={(e) => {
             e.preventDefault();
             window.localStorage.setItem("token", null);
-            window.location.reload();
+            window.location.replace("/");
           }}
         >
           <AiOutlinePoweroff />
