@@ -15,8 +15,7 @@ function PlayPauseBtn({
   token,
   deviceID,
 }) {
-  if (token && uri)
-    // if (token && deviceID && uri)
+  if (token && deviceID && uri)
     return (
       <button
         style={{ minHeight: `${size}px`, minWidth: `${size}px` }}

@@ -48,8 +48,7 @@ export const AudioPlayer = ({
   // INITIALIZE SPOTIFY SDK PLAYER
   //************************************************************//
   useEffect(() => {
-    // if (user?.product === "premium" && !player) {
-    if (!player) {
+    if (user?.product === "premium" && !player) {
       const script = document.createElement("script");
       script.src = "https://sdk.scdn.co/spotify-player.js";
       script.async = true;
@@ -65,12 +64,6 @@ export const AudioPlayer = ({
         });
 
         setPlayer(player);
-
-        player?.addListener("not_ready", ({ device_id }) => {
-          console.log(
-            `Your Device With ID ${device_id} Is Not Ready Due To Not Be Premium`
-          );
-        });
 
         player?.addListener("ready", ({ device_id }) => {
           setDeviceId(device_id);
