@@ -11,6 +11,10 @@ import getBrowseCategories from "./api/getBrowseCategories";
 import getCategoryPlaylists from "./api/getCategoryPlaylists";
 import getGenres from "./api/getGenres";
 import getWorkDetails from "./api/getWorkDetails";
+import { setSpotifyPlayer } from "./setSpotifyPlayer";
+import getPlayerState from "./api/getPlayerState";
+import setDeviceId from "./setDeviceId";
+import playPauseTrack from "./api/play_pause_track";
 export {
   getMe,
   getFeaturedList,
@@ -25,4 +29,8 @@ export {
   getCategoryPlaylists,
   getGenres,
   getWorkDetails,
+  setSpotifyPlayer,
+  getPlayerState,
+  setDeviceId,
+  playPauseTrack,
 };

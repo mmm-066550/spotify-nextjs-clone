@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./.module.sass";
 import Link from "next/link";
 import NextImage from "../NextImage";
 import PlayPauseBtn from "../PlayPauseBtn";
+import { connect } from "react-redux";
 
-export default function PlayListComponent({ playlist }) {
+export default connect(
+  (state) => state,
+  {}
+)(function PlayListComponent({ playlist, spotifyPlayer }) {
   const [isPlaying, setisPlaying] = useState(false);
+
+  useEffect(() => {
+    if (spotifyPlayer) {
+      if (
+        spotifyPlayer?.context?.uri === playlist?.uri &&
+        !spotifyPlayer?.paused
+      ) {
+        setisPlaying(true);
+      } else {
+        setisPlaying(false);
+      }
+    }
+  }, [spotifyPlayer]);
+
   return (
     <div className={`col-12 col-sm-6 col-md-4 col-xl-3  ${styles.col_xxl_2_5}`}>
       <div className={styles.playlist_component_styled}>
@@ -36,6 +54,7 @@ export default function PlayListComponent({ playlist }) {
               }`}
             >
               <PlayPauseBtn
+                uri={playlist?.uri}
                 size={40}
                 isPlaying={isPlaying}
                 setisPlaying={setisPlaying}
@@ -76,4 +95,4 @@ export default function PlayListComponent({ playlist }) {
       </div>
     </div>
   );
-}
+});

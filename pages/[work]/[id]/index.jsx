@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, useEffect } from "react";
 import Head from "next/head";
 import styles from "./.module.sass";
 import NextImage from "../../../components/NextImage";
@@ -26,11 +26,25 @@ export default connect(
   workView,
   getWorkDetails,
   clearReducer,
+  spotifyPlayer,
 }) {
   const router = useRouter();
   const { work, id } = router.query;
   const [isFound, setisFound] = useState(false);
   const [isPlaying, setisPlaying] = useState(false);
+
+  useEffect(() => {
+    if (spotifyPlayer) {
+      if (
+        spotifyPlayer?.context?.uri === workView?.uri &&
+        !spotifyPlayer?.paused
+      ) {
+        setisPlaying(true);
+      } else {
+        setisPlaying(false);
+      }
+    }
+  }, [spotifyPlayer]);
 
   useLayoutEffect(() => {
     if (["playlist", "artist", "album"].includes(work) && id) {
@@ -59,7 +73,15 @@ export default connect(
         }
       >
         <div className={`${container}`}>
+<<<<<<< Updated upstream
           <div className={`row ${work==='artist'?'align-items-center':null} ${styles.work_info_wrapper} mt-5 pt-2`}>
+=======
+          <div
+            className={`row ${styles.work_info_wrapper} ${
+              work === "artist" ? "align-items-center" : null
+            } mt-5 pt-2`}
+          >
+>>>>>>> Stashed changes
             <div
               className={`col-12 col-md-6 col-lg-5 col-xl-4 ${styles.col_xxl_3}`}
             >
@@ -161,6 +183,7 @@ export default connect(
           <div className={styles.work_actions_wrapper}>
             <span className="PP_btn_wrapper pt-5 pb-4">
               <PlayPauseBtn
+                uri={workView?.uri}
                 size={50}
                 isPlaying={isPlaying}
                 setisPlaying={setisPlaying}

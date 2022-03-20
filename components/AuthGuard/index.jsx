@@ -1,9 +1,16 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import LandingPage from "../LandingPage";
 import { updateTokenState, getMe, getUserCountry } from "../../redux/actions";
 import LoaderWrapper from "../LoaderWrapper";
+import axios from "axios";
+import {
+  CLIENT_ID,
+  CLIENT_SECRET,
+  REDIRECT_URI,
+  TOKEN_ENDPOINT,
+} from "../../utils/spotifyLogin";
 export const AuthGuard = ({
   user,
   children,
@@ -11,26 +18,42 @@ export const AuthGuard = ({
   updateTokenState,
   getMe,
   getUserCountry,
+  countryCode,
 }) => {
   const router = useRouter();
+  const [code, setCode] = useState(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     // if (typeof window !== "undefined")
     if (window.localStorage.getItem("token") !== "null")
       updateTokenState(window.localStorage.getItem("token"));
-    getUserCountry();
+    !countryCode ? getUserCountry() : null;
   }, []);
 
   useEffect(() => {
-    if (router.asPath.startsWith("/#access_token=")) {
-      updateTokenState(
-        router.asPath
-          .replace("/#access_token=", "")
-          .replace("&token_type=Bearer&expires_in=3600", "")
-      );
-      router.push("/");
+    if (router.asPath.startsWith("/?code=")) {
+      setCode(router.asPath.replace("/?code=", ""));
     }
-  });
+  }, []);
+
+  useEffect(() => {
+    if (code)
+      axios({
+        method: "post",
+        url: TOKEN_ENDPOINT,
+        data: `grant_type=authorization_code&redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&code=${code}`,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization:
+            "Basic " +
+            new Buffer(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
+        },
+      }).then((response) => {
+        updateTokenState(response.data.access_token);
+        window.location.assign("/");
+      });
+  }, [code]);
 
   useEffect(() => {
     if (token) {

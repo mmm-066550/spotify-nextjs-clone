@@ -11,6 +11,9 @@ import countryCode from "./countryCodeReducer";
 import browseCategories from "./browseReducer";
 import allCategories from "./searchGenres";
 import workView from "./workViewReducer";
+import spotifyPlayer from "./spotifyPlayer";
+import deviceID from "./deviceIdReducer";
+// import currentPlay from "./currentPlayReducer";
 
 export default combineReducers({
   user,
@@ -25,4 +28,7 @@ export default combineReducers({
   browseCategories,
   allCategories,
   workView,
+  spotifyPlayer,
+  deviceID,
+  // currentPlay,
 });
