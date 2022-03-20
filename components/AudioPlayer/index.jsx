@@ -4,11 +4,15 @@ import { connect } from "react-redux";
 import { AiOutlineHeart } from "react-icons/ai";
 import "react-input-range/lib/css/index.css";
 import RangeInput from "../RangeInput";
-import { getPlayerState } from "../../redux/actions";
 import NextImage from "../NextImage";
 import moment from "moment";
 import Head from "next/head";
-import { setDeviceId, setSpotifyPlayer } from "../../redux/actions";
+import {
+  setDeviceId,
+  setSpotifyPlayer,
+  getPlayerState,
+  playPauseTrack,
+} from "../../redux/actions";
 import {
   IoIosSkipForward,
   IoIosSkipBackward,
@@ -20,9 +24,20 @@ import { MdQueueMusic } from "react-icons/md";
 import { VscUnmute, VscMute } from "react-icons/vsc";
 
 const mapStateToProps = (state) => state;
-const mapDispatchToProps = { getPlayerState, setDeviceId, setSpotifyPlayer };
+const mapDispatchToProps = {
+  getPlayerState,
+  setDeviceId,
+  setSpotifyPlayer,
+  playPauseTrack,
+};
 
-export const AudioPlayer = ({ user, token, setDeviceId, setSpotifyPlayer }) => {
+export const AudioPlayer = ({
+  user,
+  token,
+  setDeviceId,
+  setSpotifyPlayer,
+  playPauseTrack,
+}) => {
   const [player, setPlayer] = useState(null);
   const [playerState, setPlayerState] = useState({});
   const [seconds, setSeconds] = useState(0);
@@ -52,6 +67,7 @@ export const AudioPlayer = ({ user, token, setDeviceId, setSpotifyPlayer }) => {
 
         player?.addListener("ready", ({ device_id }) => {
           setDeviceId(device_id);
+          if (device_id) playPauseTrack(device_id, token);
           player?.getCurrentState().then((res) => {
             res ? setPlayerState(res) : setPlayerState(playerState);
           });
