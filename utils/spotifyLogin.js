@@ -1,6 +1,9 @@
 export const CLIENT_ID = process.env.CLIENT_ID;
 export const CLIENT_SECRET = process.env.CLIENT_SECRET;
-export const REDIRECT_URI = window.location.origin;
+export const REDIRECT_URI =
+  typeof window !== "undefined"
+    ? window.location.origin
+    : "https://spotify-mmm066550.vercel.app";
 export const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 export const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 export const RESPONSE_TYPE = "code";
