@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  target: "serverless",
   // optimizeFonts: false,
   env: {
     CLIENT_ID: "8f64788e26c9441487c4934944f713d2",
