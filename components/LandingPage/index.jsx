@@ -6,8 +6,13 @@ import { useRouter } from "next/router";
 import { SPOTIFY_LOGIN } from "../../utils/spotifyLogin";
 import { useTheme } from "next-themes";
 import AppModeIcon from "../../public/assets/icons/appModeIcon";
-import SpotifyIcon from "../../public/assets/icons/icon";
 import { BsSpotify } from "react-icons/bs";
+import {
+  AiFillFacebook,
+  AiFillGithub,
+  AiFillLinkedin,
+  AiOutlineGlobal,
+} from "react-icons/ai";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -15,8 +20,8 @@ export default function LandingPage() {
 
   return (
     <div className={styles.app_landing_wrapper}>
-      <div className="container pb-5 px-3 px-lg-5">
-        <div className="row px-3 px-lg-5 align-items-center d-flex">
+      <div className="container pt-5 pb-3  px-3 px-lg-5">
+        <div className="row px-3 px-lg-5 align-items-center">
           <div className="col-8">
             <Link href="/">
               <a title="Spotify" className={styles.logo_app_link}>
@@ -68,10 +73,10 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="d-flex align-items-center">
-        <div className="container px-3 px-lg-5">
+      <div className={styles.hero_wrapper}>
+        <div className="container  px-3 px-lg-5">
           <div className="row px-3 px-lg-5 align-items-center d-flex">
-            <div className="col-12 col-lg-5">
+            <div className="col-12 d-flex-column col-lg-5">
               <h1 className={styles.hero_head}>
                 Music you love, right at your fingertrips.
               </h1>
@@ -88,6 +93,51 @@ export default function LandingPage() {
               >
                 Login into spotify & enjoy
               </button>
+              <div className={styles.connect_me}>
+                <p>
+                  App still in development mode. users are limited. contact me
+                  with your spotify email and user to add you
+                </p>
+                <ul>
+                  <li>
+                    <a
+                      target={"_blank"}
+                      rel="noreferrer noopener"
+                      href="https://www.linkedin.com/in/mmm066550"
+                    >
+                      <AiFillLinkedin />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target={"_blank"}
+                      rel="noreferrer noopener"
+                      href="https://fb.com/MOUSTAPHAMAHMMOUD"
+                    >
+                      <AiFillFacebook />
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      target={"_blank"}
+                      rel="noreferrer noopener"
+                      href="https://github.com/mmm-066550"
+                    >
+                      <AiFillGithub />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target={"_blank"}
+                      rel="noreferrer noopener"
+                      href="https://moustapha.me"
+                    >
+                      <AiOutlineGlobal />
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div className={`d-none d-xl-flex col-7 ${styles.spotify_icon}`}>
               <BsSpotify />
