@@ -25,9 +25,10 @@ export const AuthGuard = ({
 
   useLayoutEffect(() => {
     // if (typeof window !== "undefined")
-    if (window.localStorage.getItem("token") !== "null")
+    if (window.localStorage.getItem("token") !== "null") {
       updateTokenState(window.localStorage.getItem("token"));
-    !countryCode ? getUserCountry() : null;
+      !countryCode ? getUserCountry() : null;
+    } else updateTokenState(false);
   }, []);
 
   useEffect(() => {
@@ -62,7 +63,9 @@ export const AuthGuard = ({
     }
   }, [token]);
 
-  if (!token) {
+  if (token === null) {
+    return <LoaderWrapper />;
+  } else if (token === false) {
     return <LandingPage />;
   } else {
     if (user) {
