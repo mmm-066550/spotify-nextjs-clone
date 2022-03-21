@@ -134,6 +134,7 @@ export const AudioPlayer = ({
               {playerState?.track_window?.current_track?.album?.images[1]
                 .url ? (
                 <NextImage
+                  priority
                   width="45px"
                   height="45px"
                   layout="fixed"

@@ -38,6 +38,7 @@ export default function TrackComponent({ track, type, link, image }) {
                     layout="fixed"
                     width={40}
                     height={40}
+                    priority
                     alt={track?.track?.name || track?.name}
                   />
                 ) : null}
