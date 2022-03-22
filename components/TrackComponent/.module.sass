@@ -2,10 +2,32 @@
 .track_component_row
     border-radius: 5px
     color: var(--bs-gray-600)
-    &:hover,&:active,&:focus,.focused
+    .play_pause_btn
+        color: var(--text_color) !important
+        display: none
+    &:hover
+        .track_index_num
+            display: none
+        .play_pause_btn
+            display: inline-block !important
+            button
+                background: transparent
+                box-shadow: none
+                svg
+                    transform: 0
+                    margin: 0 !important
+                    width: 30px
+                    height: 30px
+                    color: var(--text_color)
         background: var(--bg_color_4)
         .track_artist_link,.track_album_link,.track_added_at_date,.track_index
             color: var(--text_color) !important
+    &.is_playing
+        background: var(--bg_color_4)
+        .track_artist_link,.track_album_link,.track_added_at_date,.track_index
+            color: var(--text_color) !important
+        .track_name,.track_index
+            color: $main-color !important
     .track_index
         min-width: 30px
         font-weight: 600

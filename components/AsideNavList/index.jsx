@@ -2,7 +2,7 @@ import React from "react";
 import SearchIcon from "../../public/assets/icons/searchIcon";
 import HomeIcon from "../../public/assets/icons/homeIcon";
 import LibIcon from "../../public/assets/icons/LibIcon";
-import HeartIcon from "../../public/assets/icons/HeartIcon";
+// import HeartIcon from "../../public/assets/icons/HeartIcon";
 import PlusIcon from "../../public/assets/icons/plusIcon";
 import AppModeIcon from "../../public/assets/icons/appModeIcon";
 import styles from "./.module.sass";
@@ -41,13 +41,13 @@ export default function AsideNavList({ open }) {
       path: "/play",
       icon: <PlusIcon />,
     },
-    {
-      id: 6,
-      name: "liked songs",
-      path: "/collection/tracks",
-      icon: <HeartIcon />,
-      route: true,
-    },
+    // {
+    //   id: 6,
+    //   name: "liked songs",
+    //   path: "/collection/tracks",
+    //   icon: <HeartIcon />,
+    //   route: true,
+    // },
     { id: 7 },
     {
       id: 8,

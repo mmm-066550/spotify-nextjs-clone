@@ -118,14 +118,14 @@ export const AudioPlayer = ({
 
   return (
     <>
-      <Head>
-        {playerState && !playerState?.paused ? (
+      {playerState && !playerState?.paused ? (
+        <Head>
           <title>
             Spotify | {playerState?.track_window?.current_track?.name} •{" "}
             {playerState?.track_window?.current_track?.artists[0]?.name}
           </title>
-        ) : null}
-      </Head>
+        </Head>
+      ) : null}
 
       <div className={styles.audio_playback_control_wrapper}>
         <div className={styles._wrapper}>

@@ -22,7 +22,7 @@ export default connect(
         setisPlaying(false);
       }
     }
-  }, [spotifyPlayer]);
+  }, [spotifyPlayer, playlist]);
 
   return (
     <div className={`col-12 col-sm-6 col-md-4 col-xl-3  ${styles.col_xxl_2_5}`}>

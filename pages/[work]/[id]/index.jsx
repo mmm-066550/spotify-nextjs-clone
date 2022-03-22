@@ -44,7 +44,7 @@ export default connect(
         setisPlaying(false);
       }
     }
-  }, [spotifyPlayer]);
+  }, [spotifyPlayer, workView]);
 
   useLayoutEffect(() => {
     if (["playlist", "artist", "album"].includes(work) && id) {
@@ -193,6 +193,7 @@ export default connect(
             link
             tracks={workView?.tracks?.items}
             type={work}
+            uri={workView?.uri}
           />
         ) : null}
         {workView?.artists?.length && work === "album" ? (
@@ -215,6 +216,9 @@ export default connect(
               link={false}
               tracks={workView?.moreTracks}
               type={work}
+              uri={workView?.moreTracks?.map((track) => {
+                return track.album.uri;
+              })}
             />
             <div className="more_tracks_by_artist pb-5">
               <div className={container}>

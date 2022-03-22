@@ -1,21 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./.module.sass";
 import Link from "next/link";
 import moment from "moment";
 import NextImage from "../NextImage";
+import { connect } from "react-redux";
+import PlayPauseBtn from "../PlayPauseBtn";
 
-export default function TrackComponent({ track, type, link, image }) {
+export default connect((state) => state)(function TrackComponent({
+  spotifyPlayer,
+  track,
+  type,
+  link,
+  image,
+  uri,
+}) {
+  const [isPlaying, setisPlaying] = useState(false);
+
+  useEffect(() => {
+    if (spotifyPlayer) {
+      if (
+        (spotifyPlayer?.track_window?.current_track?.uri ===
+          track?.track?.uri ||
+          spotifyPlayer?.track_window?.current_track?.uri === track?.uri) &&
+        !spotifyPlayer?.paused
+      ) {
+        setisPlaying(true);
+      } else {
+        setisPlaying(false);
+      }
+    }
+  }, [spotifyPlayer, track]);
+
   return (
-    <div className={styles.track_component_row}>
+    <div
+      className={`${styles.track_component_row} ${
+        isPlaying ? styles.is_playing : null
+      }`}
+    >
       <div className="row align-items-center py-2 my-2 px-md-4">
         <div className="col-12 col-sm-10 col-md-6 col-lg-5 d-flex align-items-center">
           <span className={`${styles.track_index}`}>
             {track ? (
-              track?.index < 10 ? (
-                `0${track?.index}`
-              ) : (
-                track?.index
-              )
+              <>
+                <span className={styles.track_index_num}>
+                  {track?.index < 10 ? `0${track?.index}` : track?.index}
+                </span>
+                <span className={styles.play_pause_btn}>
+                  <PlayPauseBtn
+                    isPlaying={isPlaying}
+                    uri={type === "artist" ? uri[track?.index - 1] : uri}
+                    offset={type !== "artist" ? track?.index : null}
+                    size={20}
+                  />
+                </span>
+              </>
             ) : (
               <span className={styles.icon_playlist_placeholder}></span>
             )}
@@ -123,4 +161,4 @@ export default function TrackComponent({ track, type, link, image }) {
       </div>
     </div>
   );
-}
+});
