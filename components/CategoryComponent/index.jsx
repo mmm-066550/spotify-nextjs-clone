@@ -11,7 +11,7 @@ export default function StyledCategoryComponent({ size, category }) {
           : `col-12 col-sm-6 col-md-4 col-xl-3 ${styles.col_xxl_2_5}`
       }
     >
-      <Link href={`/category/${category?.id}`}>
+      <Link href={`/search/category/${category?.id}`}>
         <a>
           <div
             style={{ backgroundColor: category?.bgColor }}

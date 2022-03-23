@@ -13,6 +13,7 @@ const nextConfig = {
       "seed-mix-image.spotifycdn.com",
       "charts-images.scdn.co",
       "daily-mix.scdn.co",
+      "mosaic.scdn.co",
     ],
   },
 };

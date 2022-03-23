@@ -15,6 +15,7 @@ import { setSpotifyPlayer } from "./setSpotifyPlayer";
 import getPlayerState from "./api/getPlayerState";
 import setDeviceId from "./setDeviceId";
 import playPauseTrack from "./api/play_pause_track";
+import getSearchResults from "./api/getSearchResults";
 export {
   getMe,
   getFeaturedList,
@@ -32,5 +33,6 @@ export {
   setSpotifyPlayer,
   getPlayerState,
   setDeviceId,
+  getSearchResults,
   playPauseTrack,
 };

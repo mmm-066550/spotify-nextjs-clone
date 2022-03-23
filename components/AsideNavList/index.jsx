@@ -14,43 +14,37 @@ export default function AsideNavList({ open }) {
   const { theme, setTheme } = useTheme("");
   const siteMap = [
     {
-      id: 1,
       name: "home",
       path: "/",
       icon: <HomeIcon />,
       route: true,
     },
     {
-      id: 2,
       name: "search",
       path: "/search",
       icon: <SearchIcon />,
       route: true,
     },
-    {
-      id: 3,
-      name: "library",
-      path: "/collection",
-      icon: <LibIcon />,
-      route: true,
-    },
-    { id: 4 },
-    {
-      id: 5,
-      name: "create playlist",
-      path: "/play",
-      icon: <PlusIcon />,
-    },
     // {
-    //   id: 6,
+    //   name: "library",
+    //   path: "/collection",
+    //   icon: <LibIcon />,
+    //   route: true,
+    // },
+    // {},
+    // {
+    //   name: "create playlist",
+    //   path: "/play",
+    //   icon: <PlusIcon />,
+    // },
+    // {
     //   name: "liked songs",
     //   path: "/collection/tracks",
     //   icon: <HeartIcon />,
     //   route: true,
     // },
-    { id: 7 },
+    // {},
     {
-      id: 8,
       name: `${theme === "dark" ? "light" : "dark"} mode`,
       path: "/mode",
       icon: <AppModeIcon />,
@@ -61,13 +55,13 @@ export default function AsideNavList({ open }) {
   return (
     <nav className={`${styles.app_navigation} my-4`}>
       <ul className={styles.app_navigation_list}>
-        {siteMap.map((el) => {
+        {siteMap.map((el, i) => {
           if (el.name)
             if (el.route)
               return (
                 <NavLink
                   title={capitalize(el.name)}
-                  key={el.id}
+                  key={i}
                   styles={styles}
                   href={el.path}
                   exact={el.path === "/" ? true : false}

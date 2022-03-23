@@ -13,8 +13,8 @@ import allCategories from "./searchGenres";
 import workView from "./workViewReducer";
 import spotifyPlayer from "./spotifyPlayer";
 import deviceID from "./deviceIdReducer";
-// import currentPlay from "./currentPlayReducer";
-
+import categoryPage from "./categoryPageReducer";
+import searchResults from "./searchResults";
 export default combineReducers({
   user,
   token,
@@ -30,5 +30,6 @@ export default combineReducers({
   workView,
   spotifyPlayer,
   deviceID,
-  // currentPlay,
+  categoryPage,
+  searchResults,
 });
