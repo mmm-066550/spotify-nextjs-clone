@@ -23,7 +23,7 @@ export const AuthGuard = ({
   const router = useRouter();
   const [code, setCode] = useState(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // if (typeof window !== "undefined")
     if (window.localStorage.getItem("token") !== "null") {
       updateTokenState(window.localStorage.getItem("token"));
