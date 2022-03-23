@@ -15,6 +15,7 @@ import spotifyPlayer from "./spotifyPlayer";
 import deviceID from "./deviceIdReducer";
 import categoryPage from "./categoryPageReducer";
 import searchResults from "./searchResults";
+import userTopItems from "./userTopReducer";
 export default combineReducers({
   user,
   token,
@@ -32,4 +33,5 @@ export default combineReducers({
   deviceID,
   categoryPage,
   searchResults,
+  userTopItems,
 });

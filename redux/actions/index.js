@@ -16,6 +16,7 @@ import getPlayerState from "./api/getPlayerState";
 import setDeviceId from "./setDeviceId";
 import playPauseTrack from "./api/play_pause_track";
 import getSearchResults from "./api/getSearchResults";
+import getUserTopItems from "./api/getUserTopItems";
 export {
   getMe,
   getFeaturedList,
@@ -35,4 +36,5 @@ export {
   setDeviceId,
   getSearchResults,
   playPauseTrack,
+  getUserTopItems,
 };

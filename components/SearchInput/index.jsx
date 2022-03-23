@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./.module.sass";
 import SearchIcon from "../../public/assets/icons/searchIcon";
 import { useRouter } from "next/router";
+import debounce from "debounce";
 
 export default function SearchInput() {
   const router = useRouter();
@@ -13,7 +14,9 @@ export default function SearchInput() {
           <input
             type="text"
             placeholder="Artists, songs or podcasts"
-            onChange={(e) => router.push(`/search/${e.target.value}`)}
+            onChange={debounce((e) => {
+              router.push(`/search/${e.target.value}`);
+            }, 1000)}
           />
         </form>
       </div>

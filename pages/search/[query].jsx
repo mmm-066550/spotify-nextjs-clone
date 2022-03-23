@@ -37,7 +37,7 @@ export default connect(
           <h4 className={`${playlists_row_title} pb-3`}>Songs</h4>
           {searchResults?.tracks?.items?.map((track, i) => (
             <TrackComponent
-            key={i}
+              key={i}
               track={{ ...track, index: i + 1 }}
               image
               uri={track.album.uri}

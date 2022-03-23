@@ -43,6 +43,7 @@ export default connect(
                   width={100}
                   height={100}
                   priority
+                  objectFit="cover"
                 />
               ) : null}
             </a>

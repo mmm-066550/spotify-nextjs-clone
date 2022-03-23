@@ -73,7 +73,7 @@ export default function AsideNavList({ open }) {
               );
             else {
               return (
-                <li key={el.id} className={`${styles.app_nav_item}`}>
+                <li key={i} className={`${styles.app_nav_item}`}>
                   <div className="container">
                     <button
                       title={
@@ -97,7 +97,7 @@ export default function AsideNavList({ open }) {
             }
           else {
             return (
-              <li key={el.id} className={`${styles.app_nav_item}`}>
+              <li key={i} className={`${styles.app_nav_item}`}>
                 <div className="container">
                   <hr className={styles.list_divider} />
                 </div>
