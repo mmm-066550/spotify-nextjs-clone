@@ -28,7 +28,7 @@ export const AuthGuard = ({
     if (window.localStorage.getItem("token") !== "null") {
       updateTokenState(window.localStorage.getItem("token"));
       !countryCode ? getUserCountry() : null;
-    } else updateTokenState(false);
+    }
   }, []);
 
   useEffect(() => {
