@@ -15,7 +15,7 @@ const nextConfig = {
       "daily-mix.scdn.co",
       "mosaic.scdn.co",
       "thisis-images.scdn.co",
-      "*.scdn.co",
+      "seeded-session-images.scdn.co",
     ],
   },
 };
