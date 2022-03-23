@@ -14,6 +14,8 @@ const nextConfig = {
       "charts-images.scdn.co",
       "daily-mix.scdn.co",
       "mosaic.scdn.co",
+      "thisis-images.scdn.co",
+      "*.scdn.co",
     ],
   },
 };
