@@ -63,9 +63,7 @@ export const AuthGuard = ({
     }
   }, [token]);
 
-  if (token === null) {
-    return <LoaderWrapper />;
-  } else if (token === false) {
+  if (!token) {
     return <LandingPage />;
   } else {
     if (user) {
