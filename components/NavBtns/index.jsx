@@ -13,7 +13,7 @@ export default function NavBtns() {
           title="Go Back"
           className={styles.app_nav_btn}
           disabled={router.pathname === "/"}
-          onClick={router.push("/")}
+          onClick={()=>router.push("/")}
         >
           <FiChevronLeft />
           Back To Homepage
