@@ -40,11 +40,14 @@ export default function AppSidebar({ style, open, setOpen }) {
         <AsideNavList open={open} />
       </div>
       <div className={`${styles.download_app_area} mb-5 d-none d-lg-block`}>
-        <Link href={"/download"}>
-          <a className={styles.download_app_btn}>
-            {open ? "Download App" : <DownloadIcon />}
-          </a>
-        </Link>
+        <a
+          target={"_blank"}
+          rel="noreferrer noopener"
+          href="https://www.spotify.com/download"
+          className={styles.download_app_btn}
+        >
+          {open ? "Download App" : <DownloadIcon />}
+        </a>
       </div>
     </aside>
   );
