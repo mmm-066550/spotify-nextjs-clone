@@ -10,3 +10,8 @@ live_preview: [https://spotify-nextjs.netlify.app](https://spotify-nextjs.netlif
 
 ## Important Note 📝:
 App still in development mode. users are limited. contact me with your spotify email and user to add you
+
+## Intialization Steps:
+1. Update API client ID and secret key in `next.config.js` file
+2. Run command ```npm run dev```
+3. Open ```http://localhost:3000``` on your browser
