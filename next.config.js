@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  env: {
-    CLIENT_ID: "",
-    CLIENT_SECRET: "",
-  },
+  
   images: {
     domains: [
       "i.scdn.co",
