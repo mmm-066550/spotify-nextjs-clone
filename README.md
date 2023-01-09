@@ -2,7 +2,7 @@
 
 🎧 🎵 **Spotify** clone app using spotify api and spotify SDK with **React.js**, **Next.js** and **Redux**
 
-live_preview: [https://spotify-nextjs.netlify.app](https://spotify-nextjs.netlify.app)
+live_preview: [https://spotify-mmm066550.netlify.app](https://spotify-nextjs.netlify.app)
 
 ## Tools & Techniques 🛠👨‍💻:
 - ReactJs with NextJs and Redux
