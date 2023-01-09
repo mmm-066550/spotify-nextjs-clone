@@ -131,7 +131,7 @@ export default function LandingPage() {
                     <a
                       target={"_blank"}
                       rel="noreferrer noopener"
-                      href="https://moustapha.me"
+                      href="https://mmm066550.me"
                     >
                       <AiOutlineGlobal />
                     </a>
