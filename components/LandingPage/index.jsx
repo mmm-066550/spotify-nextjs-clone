@@ -112,7 +112,7 @@ export default function LandingPage() {
                     <a
                       target={"_blank"}
                       rel="noreferrer noopener"
-                      href="https://fb.com/MOUSTAPHAMAHMMOUD"
+                      href="https://fb.com/mmm066550"
                     >
                       <AiFillFacebook />
                     </a>
