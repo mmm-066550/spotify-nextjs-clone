@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env:{
-    CLIENT_ID:"8f64788e26c9441487c4934944f713d2",
-    CLIENT_SECRET:"11d1f5c8a5b14cdd95bf86db6d8beb96"
+    CLIENT_ID:"a31e84724dfd4c3c8828547cd9fd59e3",
+    CLIENT_SECRET:"5272286a2e0d4972a44fcf95b86a3261"
   },
   
   images: {
